@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR=$(dirname $(realpath $0))
+
+echo "-----[CodecCLI]-----"
+echo ""
+
+if [ -z $1 ]; then
+    echo "Error:"
+    echo "You need to define one subcommand!"
+    exit 1
+fi
+CMD="$1"
+
+if [[ "$CMD" = restartall* ]]; then
+    CMD="restartall"
+fi
+if [[ "$CMD" = ena* ]]; then
+    CMD="enable"
+fi
+if [[ "$CMD" = dis* ]]; then
+    CMD="disable"
+fi
+
+if [[ "$CMD" = in* ]]; then
+    CMD="install"
+fi
+if [[ "$CMD" = un* ]]; then
+    CMD="uninstall"
+fi
+
+if [[ "$CMD" = up* ]]; then
+    CMD="updateall"
+fi
+
+if [[ "$CMD" = defaultp* ]]; then
+    CMD="defaultpass"
+fi
+if [[ "$CMD" = passh* ]]; then
+    CMD="passhash"
+fi
+if [[ "$CMD" = setp* ]]; then
+    CMD="setpass"
+fi
+
+if [[ "$CMD" = at* ]]; then
+    CMD="attach"
+fi
+if [[ "$CMD" = bu* ]]; then
+    CMD="build"
+fi
+if [[ "$CMD" = cr* ]]; then
+    CMD="cron"
+fi
+if [[ "$CMD" = un* ]]; then
+    CMD="uncron"
+fi
+if [[ "$CMD" = cl* ]]; then
+    CMD="close"
+fi
+if [[ "$CMD" = dev* ]]; then
+    CMD="dev"
+elif [[ "$CMD" = de* ]]; then
+    CMD="delete"
+fi
+if [[ "$CMD" = ex* ]]; then
+    CMD="exist"
+fi
+if [[ "$CMD" = he* ]]; then
+    CMD="help"
+fi
+if [[ "$CMD" = lo* ]]; then
+    CMD="logs"
+elif [[ "$CMD" = li* ]]; then
+    CMD="list"
+fi
+if [[ "$CMD" = pa* ]]; then
+    CMD="pass"
+fi
+
+if [[ "$CMD" = ra* ]]; then
+    CMD="randompass"
+elif [[ "$CMD" = reseth* ]]; then
+    CMD="resethash"
+elif [[ "$CMD" = reset ]]; then
+    CMD="reset"
+fi
+
+if [[ "$CMD" = sto* ]]; then
+    CMD="stopall"
+elif [[ "$CMD" = st* ]]; then
+    CMD="start"
+fi
+
+if [ ! -f "$CURRENT_DIR/scripts/$CMD.sh" ]; then
+    echo "CodecCLI command $CMD not found!"
+    echo ""
+    echo "Help:"
+    $CURRENT_DIR/scripts/help.sh
+    exit 1
+fi
+
+$CURRENT_DIR/scripts/$CMD.sh ${@:2}

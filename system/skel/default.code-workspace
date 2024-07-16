@@ -1,0 +1,21 @@
+{
+        "folders": [
+                {
+                        "name": "CodeC",
+                        "path": "/codec/.codec"
+                },
+                {
+                        "name": "Mounts",
+                        "path": "/codec/mounts"
+                },
+                {
+                        "name": "Archive",
+                        "path": "/codec/archive"
+                },
+                {
+                        "name": "Workspace",
+                        "path": "/codec/ws"
+                }
+        ],
+        "settings": {}
+}

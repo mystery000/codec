@@ -1,0 +1,6 @@
+.store
+codec-data
+
+node_modules
+!.keep
+!.gitkeep
