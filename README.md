@@ -1,12 +1,3 @@
-
-# codec ( [depricated](#depricated) )
-![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fcodec)
-![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fcodec)
-![](https://img.shields.io/badge/dynamic/json?color=orange&label=subscribers&query=subscribers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fcodec)
-![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fcodec)
-![](https://img.shields.io/badge/dynamic/json?color=darkred&label=open%20issues&query=open_issues&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fcodec)
-
 # table of contents
 - [codec](#codec)
 - [table of contents](#table-of-contents)
@@ -94,7 +85,7 @@ Please note that the CodeC is under development, may have some security issues a
 
 
 ```bash
-git clone git@github.com:NobleMajo/codec.git codec
+git clone git@github.com:mystery000/codec.git codec
 ```
 
 ## Provider CLI
@@ -594,9 +585,3 @@ Component Changes:
 ```ts
 // please create seperated forks for different kind of featues/ideas/structure changes/implementations
 ```
-
----
-**cya ;3**  
-*by NobleMajo*
-
-

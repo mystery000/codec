@@ -53,9 +53,6 @@ First version with big breaking changes, new folder structure, build in systemd 
 ## Mar 9, 2023
 - Update Code Server version
 
-## Mar 1, 2023
-- Rename majo418 to noblemajo
-
 ## Feb 20, 2023
 - Fix commands
 
