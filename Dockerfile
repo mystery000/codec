@@ -94,7 +94,13 @@ RUN curl -o- $NVM_URL |bash \
     && systemctl enable codec.service \
     && . /etc/environment \
     && VSCODE_GALLERY="$VSCODE_GALLERY" /etc/codec/vscode_gallery.js \
-    && codei emmanuelbeziat.vscode-great-icons \
+    && codei pkief.material-icon-theme \
+    && codei pinage404.git-extension-pack \
+    && codei ms-python.python \
+    && codei ms-python.debugpy \
+    && codei mhutchie.git-graph \
+    && codei felipecaputo.git-project-manager \
+    && codei eamodio.gitlens \
     \
     && /etc/codec/health.sh \
     \
