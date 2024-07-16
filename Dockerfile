@@ -101,6 +101,7 @@ RUN curl -o- $NVM_URL |bash \
     && codei mhutchie.git-graph \
     && codei felipecaputo.git-project-manager \
     && codei eamodio.gitlens \
+    && codei ms-vsliveshare.vsliveshare \
     \
     && /etc/codec/health.sh \
     \

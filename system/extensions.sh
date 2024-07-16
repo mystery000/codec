@@ -13,3 +13,4 @@ codei ms-python.debugpy
 codei mhutchie.git-graph 
 codei felipecaputo.git-project-manager 
 codei eamodio.gitlens
+codei ms-vsliveshare.vsliveshare

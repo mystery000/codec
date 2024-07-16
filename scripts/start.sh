@@ -110,6 +110,7 @@ DOCKER_START_CMD=" \
         -p '0.0.0.0:$START_PORT-$END_PORT:8080/tcp' \
         -p '0.0.0.0:$START_PORT-$END_PORT:8080/udp' \
         -e 'CODEC_PORTS=$START_PORT-$END_PORT' \
+        -e 'CODEC_USER=$CODEC_USER' \
         -v '$CODEC_USER_DATA/.codec/shared_folder:/codec/mounts/shared' \
         -v '$CODEC_USER_DATA/$CODEC_USER:/codec' \
         codec2 \
