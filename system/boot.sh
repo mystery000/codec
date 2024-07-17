@@ -8,6 +8,9 @@ source /etc/environment
 # health check
 /etc/codec/health.sh
 
+# install tools
+/etc/codec/tools.sh
+
 apt-get update
 
 # default vscode extensions

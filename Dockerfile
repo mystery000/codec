@@ -104,6 +104,7 @@ RUN curl -o- $NVM_URL |bash \
     && codei ms-vsliveshare.vsliveshare \
     \
     && /etc/codec/health.sh \
+    && /etc/codec/tools.sh \
     \
     && echo "source /etc/codec/bash.sh" >> /root/.bashrc \
     && usermod --shell /bin/bash root \

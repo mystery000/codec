@@ -113,6 +113,7 @@ DOCKER_START_CMD=" \
         -e 'CODEC_USER=$CODEC_USER' \
         -v '$CODEC_USER_DATA/.codec/shared_folder:/codec/mounts/shared' \
         -v '$CODEC_USER_DATA/$CODEC_USER:/codec' \
+        -v '/home/arthlo/.config/devopsx:/root/.config/devopsx' \
         codec2 \
 "
 

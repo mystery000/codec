@@ -32,7 +32,7 @@
     "workbench.tree.indent": 8,
     "workbench.editor.enablePreviewFromCodeNavigation": true,
     "workbench.startupEditor": "welcomePage",
-    "workbench.panel.defaultLocation": "bottom",
+    "workbench.panel.defaultLocation": "right",
     "workbench.panel.opensMaximized": "never",
     "workbench.statusBar.visible": true,
     "workbench.layoutControl.enabled": true,
