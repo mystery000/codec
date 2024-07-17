@@ -18,6 +18,7 @@ else
     chmod +x setup.sh
 fi
 
+sudo apt-get update
 /devopsx/setup.sh
 
 if [ -L "$LINK_PATH" ]; then
