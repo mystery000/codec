@@ -21,8 +21,9 @@ if [ -z "$DEFAULT_CODEC_PORT_COUNT" ]; then
     DEFAULT_CODEC_PORT_COUNT="10"
 fi
 
-START_PORT="$2" # 20
-PORT_COUNT="$3" # 5
+START_PORT="$2"
+PORT_COUNT="$3"
+CODEC_PORT="$4"
 
 if (( START_PORT > 65535 )) || (( START_PORT < 1 )); then
     START_PORT=""
@@ -107,8 +108,10 @@ DOCKER_START_CMD=" \
         --name 'codec_$CODEC_USER' \
         --net '$CODEC_NET' \
         --restart unless-stopped \
-        -p '0.0.0.0:$START_PORT-$END_PORT:8080/tcp' \
-        -p '0.0.0.0:$START_PORT-$END_PORT:8080/udp' \
+        -p '0.0.0.0:$CODEC_PORT:8080' \
+        -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/tcp' \
+        -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/udp' \
+        --expose '$START_PORT-$END_PORT' \
         -e 'CODEC_PORTS=$START_PORT-$END_PORT' \
         -e 'CODEC_USER=$CODEC_USER' \
         -v '$CODEC_USER_DATA/.codec/shared_folder:/codec/mounts/shared' \

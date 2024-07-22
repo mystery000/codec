@@ -160,7 +160,7 @@ The CodeC CLI, also known as `codeccli`, is a provider CLI that allows a CodeC p
 To start or restart a CodeC user container, use the following command:
 
 ```bash
-codeccli start <USER_NAME> <START_PORT> <PORT_COUNT>
+codeccli start <USER_NAME> <START_PORT> <PORT_COUNT> <CODEC_PORT>
 ```
 
 Additional options for the start command include:
