@@ -200,6 +200,10 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+.header .main b {
+    text-transform: capitalize;
+}
+
 .header .sub {
     font-family: "Inter", sans-serif;
 }

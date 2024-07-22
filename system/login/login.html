@@ -29,7 +29,7 @@
       </svg>
 
       <div class="header">
-        <h3 class="main withUsername">Welcome!</h3>
+        <h3 class="main withUsername">Welcome <b>{{USERNAME}}</b></h3>
         <div class="sub">Please enter your developer password:</div>
       </div>
 
@@ -83,6 +83,19 @@
       typeof element.onmouseleave == "function" && element.onmouseleave()
       typeof element.mouseleave == "function" && element.mouseleave()
     }
+
+    function getUser() {
+      let user = new URL(window.location).pathname
+      const regex = /\/codex\/([^\/]+)\//;
+      return user.match(regex)[1];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = getUser()
+      for (const element of document.getElementsByClassName("withUsername")) {
+        element.innerHTML = element.innerHTML.split("{{USERNAME}}").join(user)
+      }
+    })
 
     const timoutPromise = (millis) => new Promise(
       (res) => setTimeout(
