@@ -9,7 +9,7 @@ ARG NVM_URL="https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.
 ARG NODE_VERSION="20"
 ARG NPM_VERSION="10"
 ARG NODEMON_VERSION="3"
-ARG VSCODE_VERSION="4.91.0"
+ARG VSCODE_VERSION="4.91.1"
 ARG VSCODE_URL="https://code-server.dev/install.sh"
 
 ENV VSCODE_GALLERY="ms2"
