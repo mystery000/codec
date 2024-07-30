@@ -1729,11 +1729,6 @@
       "when": "accessibleViewContainsCodeBlocks && accessibleViewCurrentProviderId == 'panelChat'"
     },
     {
-      "key": "ctrl+k ctrl+k",
-      "command": "editor.action.defineKeybinding",
-      "when": "resource == 'vscode-userdata:/home/arthlo/.config/Code/User/keybindings.json'"
-    },
-    {
       "key": "tab",
       "command": "editor.action.inlineSuggest.commit",
       "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"

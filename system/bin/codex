@@ -282,7 +282,7 @@ if [[
 fi
 
 echo "              / / / / /"
-echo "             C O D E C "
+echo "             C O D E X "
 echo "            / / / / /  "
 echo "                     v2"
 echo "A Ubuntu 22.04 based vscode server docker image"
