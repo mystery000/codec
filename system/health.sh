@@ -56,6 +56,7 @@ echo "Linked: '/usr/lib/code-server/src/browser'"
 
 # /etc/codex/readme.sh
 # /etc/codex/changelogs.sh
+/etc/codex/openssh_server.sh
 
 echo "[CODEX][HEALTH]: Linking home 'ws' dir..."
 rm -rf /root/ws

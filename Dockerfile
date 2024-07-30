@@ -47,7 +47,7 @@ RUN sed -i "s/# deb-src/deb-src/g" /etc/apt/sources.list \
     && apt-get install -y --no-install-recommends \
     curl wget tar git nano vim git-lfs \
     && apt-get install -y --no-install-recommends \
-    systemd systemd-cron rsyslog dnsutils \
+    systemd systemd-cron rsyslog dnsutils openssh-server\
     && git lfs install \
     && cd /lib/systemd/system/sysinit.target.wants/ \
     && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \
