@@ -106,19 +106,30 @@ DOCKER_START_CMD=" \
     docker run -d \
         --privileged \
         --name 'codex_$CODEX_USER' \
-        --net '$CODEX_NET' \
+        --net 'host' \
         --restart unless-stopped \
-        -p '0.0.0.0:$CODEX_PORT:8080' \
-        -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/tcp' \
-        -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/udp' \
-        --expose '$START_PORT-$END_PORT' \
-        -e 'CODEX_PORTS=$START_PORT-$END_PORT' \
-        -e 'CODEX_USER=$CODEX_USER' \
         -v '$CODEX_USER_DATA/.codex/shared_folder:/codex/mounts/shared' \
         -v '$CODEX_USER_DATA/$CODEX_USER:/codex' \
-        -v '/home/debian/.config/devopsx:/root/.config/devopsx' \
         codex \
 "
+
+# DOCKER_START_CMD=" \
+#     docker run -d \
+#         --privileged \
+#         --name 'codex_$CODEX_USER' \
+#         --net '$CODEX_NET' \
+#         --restart unless-stopped \
+#         -p '0.0.0.0:$CODEX_PORT:8080' \
+#         -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/tcp' \
+#         -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/udp' \
+#         --expose '$START_PORT-$END_PORT' \
+#         -e 'CODEX_PORTS=$START_PORT-$END_PORT' \
+#         -e 'CODEX_USER=$CODEX_USER' \
+#         -v '$CODEX_USER_DATA/.codex/shared_folder:/codex/mounts/shared' \
+#         -v '$CODEX_USER_DATA/$CODEX_USER:/codex' \
+#         -v '/home/debian/.config/devopsx:/root/.config/devopsx' \
+#         codex \
+# "
 
 echo "[CODEX_CLI][START]: Docker run command preview: '"
 echo "$DOCKER_START_CMD"
