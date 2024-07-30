@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo "[CODEC][EXTENSION]: Set vscode extension store..." 
+echo "[CODEX][EXTENSION]: Set vscode extension store..." 
 export VSCODE_GALLERY=ms2
 /etc/codec/vscode_gallery.js
 
-echo "[CODEC][EXTENSION]: Install default extensions..." 
+echo "[CODEX][EXTENSION]: Install default extensions..." 
 
 codei pkief.material-icon-theme 
 codei pinage404.git-extension-pack 

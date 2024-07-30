@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-if [ -z "$CODEC_NET" ]; then
-    CODEC_NET="codec_net"
+if [ -z "$CODEX_NET" ]; then
+    CODEX_NET="codex_net"
 fi
 
 docker pull majo418/cprox
 
-docker rm -f "codec2_proxy" > /dev/null 2>&1
-docker network create "$CODEC_NET" > /dev/null 2>&1
+docker rm -f "codex_proxy" > /dev/null 2>&1
+docker network create "$CODEX_NET" > /dev/null 2>&1
 
 docker run -itd --rm \
-    --name "codec2_proxy" \
+    --name "codex_proxy" \
     -p 80:80 \
     -p 443:443 \
-    --net "$CODEC_NET" \
+    --net "$CODEX_NET" \
     -v /home/netde/static/main:/var/www/html \
     -v /home/netde/certs/coreunit.net:/app/certs \
     -e CERT_PATH="/app/certs" \
@@ -29,4 +29,4 @@ docker run -itd --rm \
         "coreunit.net=REDIRECT:https://discord.gg/pwHNaHRa9W"
 
 echo "### Proxy is running..."
-echo "(Check proxy with 'docker logs codec2_proxy')"
+echo "(Check proxy with 'docker logs codex_proxy')"

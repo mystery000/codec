@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][RANDOMPASSWORD]: No codec user defined!"
+    echo "[CODEX_CLI][RANDOMPASSWORD]: No codec user defined!"
     exit 1
 fi
 

@@ -23,10 +23,10 @@ apt-get update
 sysctl -p
 
 # run vscode server service
-echo "[CODEC][VSCODE]: Start vscode service..."
+echo "[CODEX][VSCODE]: Start vscode service..."
 systemctl start vscode
 
 # init async mods
 /etc/codec/mods_async.sh
 
-echo "[CODEC][VSCODE]: Done!"
+echo "[CODEX][VSCODE]: Done!"

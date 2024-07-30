@@ -3,7 +3,7 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "[CODEC_CLI][STOPALL]: Load codec container user list..."
+echo "[CODEX_CLI][STOPALL]: Load codec container user list..."
 USER_LIST=$(
     docker run -it --rm \
         -v "$CODEC_USER_DATA:/app" \
@@ -22,12 +22,12 @@ for USER_FOLDER in ${USER_LIST[@]}; do
 done
 
 if ["${#USER_ARR[@]}" == "0"]; then
-    echo "[CODEC_CLI][UPDATEALL]: No codec user exists!"
+    echo "[CODEX_CLI][UPDATEALL]: No codec user exists!"
     exit 1
 fi
 
 echo ""
-echo "[CODEC_CLI][STOPALL]: "
+echo "[CODEX_CLI][STOPALL]: "
 echo "##### STOP ALL #####"
 echo "# Stop following users?"
 for USER_NAME in ${USER_ARR[@]}; do
@@ -42,7 +42,7 @@ if [ "$INPUT_VALUE" != "y" ]; then
     exit 1
 fi 
 
-echo "[CODEC_CLI][STOPALL]: Stop user container..."
+echo "[CODEX_CLI][STOPALL]: Stop user container..."
 for USER_NAME in ${USER_ARR[@]}; do
     echo "##### ##### ##### ##### ##### ##### #####"
     echo "                    Next user: $USER_NAME"
@@ -50,4 +50,4 @@ for USER_NAME in ${USER_ARR[@]}; do
 done
 echo "##### ##### ##### ##### ##### ##### #####"
 
-echo "[CODEC_CLI][STOPALL]: All user contaienrs stopped!"
+echo "[CODEX_CLI][STOPALL]: All user contaienrs stopped!"

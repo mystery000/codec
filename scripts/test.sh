@@ -8,30 +8,30 @@ BUILD_PID=$!
 
 DOCKER_START_CMD=" \
     docker run -it \
-        --name 'codeccli_test' \
-        --net '$CODEC_NET' \
+        --name 'codexcli_test' \
+        --net '$CODEX_NET' \
         -e 'CODEC_PORTS=NONE-TEST-CONTAINER' \
-        codec2 \
+        codex \
         /bin/bash \
 "
 
-echo "[CODEC_CLI][TEST]: Docker run command preview: '"
+echo "[CODEX_CLI][TEST]: Docker run command preview: '"
 echo "$DOCKER_START_CMD"
 echo "'"
 
-echo "[CODEC_CLI][TEST]: Wait for image building..."
+echo "[CODEX_CLI][TEST]: Wait for image building..."
 while kill -0 $BUILD_PID >/dev/null 2>&1; do
     sleep 1
 done
-echo "[CODEC_CLI][TEST]: Image ready!"
+echo "[CODEX_CLI][TEST]: Image ready!"
 
-docker rm -f codeccli_test > /dev/null 2>&1
-docker network create "$CODEC_NET" > /dev/null 2>&1
+docker rm -f codexcli_test > /dev/null 2>&1
+docker network create "$CODEX_NET" > /dev/null 2>&1
 
-echo "[CODEC_CLI][TEST]: Run docker container..."
+echo "[CODEX_CLI][TEST]: Run docker container..."
 bash -c "$DOCKER_START_CMD"
 
-#echo "[CODEC_CLI][TEST]: Run docker daemon..."
+#echo "[CODEX_CLI][TEST]: Run docker daemon..."
 #$CURRENT_DIR/dockerd.sh $CODEC_USER
 
-echo "[CODEC_CLI][TEST]: Finished!"
+echo "[CODEX_CLI][TEST]: Finished!"

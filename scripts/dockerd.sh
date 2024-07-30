@@ -4,11 +4,11 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][DOCKERD]: No codec user defined!"
+    echo "[CODEX_CLI][DOCKERD]: No codec user defined!"
     exit 1
 fi
 
-echo "[CODEC_CLI][DOCKERD]: Prepare $CODEC_USER docker daemon process..."
+echo "[CODEX_CLI][DOCKERD]: Prepare $CODEC_USER docker daemon process..."
 
 CODEC_USER=$1
 CODEC_DOCKERD_DIR="$CODEC_USER_DATA/.codec/dockerd/"
@@ -37,5 +37,5 @@ cat <<EOF > $CODEC_DOCKERD_CONFIG_PATH
 }
 EOF
 
-echo "[CODEC_CLI][DOCKERD]: Run $CODEC_USER docker daemon process..."
+echo "[CODEX_CLI][DOCKERD]: Run $CODEC_USER docker daemon process..."
 $CURRENT_DIR/dockerd-process.sh $CODEC_USER > "$CODEC_DOCKERD_DIR/$CODEC_USER_docker_sidecar.logs" &

@@ -3,7 +3,7 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "[CODEC_CLI][UPDATEALL]: Load codec container user list..."
+echo "[CODEX_CLI][UPDATEALL]: Load codec container user list..."
 USER_LIST=$(
     docker run -it --rm \
         -v "$CODEC_USER_DATA:/app" \
@@ -22,12 +22,12 @@ for USER_FOLDER in ${USER_LIST[@]}; do
 done
 
 if [ "${#USER_ARR[@]}" == "0" ]; then
-    echo "[CODEC_CLI][UPDATEALL]: No codec user exists!"
+    echo "[CODEX_CLI][UPDATEALL]: No codec user exists!"
     exit 1
 fi
 
 echo ""
-echo "[CODEC_CLI][UPDATEALL]: "
+echo "[CODEX_CLI][UPDATEALL]: "
 echo "##### UPDATE ALL #####"
 echo "# Following users will be re/started:"
 for USER_NAME in ${USER_ARR[@]}; do
@@ -43,7 +43,7 @@ if [ "$1" == "$FLAG_NAME" ] ||  [ "$1" == "$FLAG_SHORTNAME" ]  ||
     [ "$6" == "$FLAG_NAME" ] || [ "$7" == "$FLAG_NAME" ] ||
     [ "$4" == "$FLAG_SHORTNAME" ] || [ "$5" == "$FLAG_SHORTNAME" ] ||
     [ "$6" == "$FLAG_SHORTNAME" ] || [ "$7" == "$FLAG_SHORTNAME" ]; then
-    echo "[CODEC_CLI][UPDATEALL]: Force update all containers!"
+    echo "[CODEX_CLI][UPDATEALL]: Force update all containers!"
 else
     echo "# Enter 'y' to start the '${#USER_ARR[@]}' codec user containers."
     echo "# [CTRL] + [C] to abort!"
@@ -54,11 +54,11 @@ else
     fi
 fi
 
-echo "[CODEC_CLI][UPDATEALL]: Wait for image building..."
+echo "[CODEX_CLI][UPDATEALL]: Wait for image building..."
 wait $BUILD_PID
-echo "[CODEC_CLI][UPDATEALL]: Image ready!"
+echo "[CODEX_CLI][UPDATEALL]: Image ready!"
 
-echo "[CODEC_CLI][UPDATEALL]: Start user container..."
+echo "[CODEX_CLI][UPDATEALL]: Start user container..."
 for USER_NAME in ${USER_ARR[@]}; do
     echo "##### ##### ##### ##### ##### ##### #####"
     echo "                    Next user: $USER_NAME"
@@ -66,9 +66,9 @@ for USER_NAME in ${USER_ARR[@]}; do
 done
 echo "##### ##### ##### ##### ##### ##### #####"
 
-echo "[CODEC_CLI][UPDATEALL]: All containers started!"
+echo "[CODEX_CLI][UPDATEALL]: All containers started!"
 
-echo "[CODEC_CLI][UPDATEALL]: Clear unused docker resources..."
+echo "[CODEX_CLI][UPDATEALL]: Clear unused docker resources..."
 docker system prune -f --volumes --all
 
-echo "[CODEC_CLI][UPDATEALL]: Finished!"
+echo "[CODEX_CLI][UPDATEALL]: Finished!"

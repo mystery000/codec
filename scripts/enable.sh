@@ -5,10 +5,10 @@ source $CURRENT_DIR/vars.sh
 
 USER=$1
 
-echo "[CODEC_CLI][ENABLE]: Enable user '$1'..."
-docker rm -f codeccli-disable > /dev/null 2>&1
+echo "[CODEX_CLI][ENABLE]: Enable user '$1'..."
+docker rm -f codexcli-disable > /dev/null 2>&1
 docker run -it --rm \
-    --name "codeccli-disable" \
+    --name "codexcli-disable" \
     -v "$CODEC_USER_DATA/:/app" \
     ubuntu:22.04 \
         bash -c \

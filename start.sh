@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-./codeccli build -s
+./codexcli build -s
 
-./codeccli start tester 30000 0 -f
+./codexcli start tester 30000 0 -f

@@ -16,24 +16,24 @@ if [ "$1" == "$FLAG_NAME" ] ||  [ "$1" == "$FLAG_SHORTNAME" ]  ||
     [ "$6" == "$FLAG_NAME" ] || [ "$7" == "$FLAG_NAME" ] ||
     [ "$4" == "$FLAG_SHORTNAME" ] || [ "$5" == "$FLAG_SHORTNAME" ] ||
     [ "$6" == "$FLAG_SHORTNAME" ] || [ "$7" == "$FLAG_SHORTNAME" ]; then
-    echo "[CODEC_CLI][BUILD]: Build codec image form scratch..."
+    echo "[CODEX_CLI][BUILD]: Build codec image form scratch..."
 
     docker build \
         --pull \
         --no-cache \
-        -t codec2 \
+        -t codex \
         .
 
-    echo "[CODEC_CLI][BUILD]: Scratch image ready!"
+    echo "[CODEX_CLI][BUILD]: Scratch image ready!"
     echo 0
 fi
 
 
 
-echo "[CODEC_CLI][BUILD]: Build codec image..."
+echo "[CODEX_CLI][BUILD]: Build codec image..."
 
 docker build \
-    -t codec2 \
+    -t codex \
     .
 
-echo "[CODEC_CLI][BUILD]: Image ready!"
+echo "[CODEX_CLI][BUILD]: Image ready!"

@@ -85,15 +85,15 @@ Please note that the CodeC is under development, may have some security issues a
 
 
 ```bash
-git clone git@github.com:mystery000/codec.git codec
+git clone git@github.com:mystery000/codex.git codex
 ```
 
 ## Provider CLI
 ```bash
-cd codec
-./codeccli install  # installs the CodeC CLI tool
-codeccli help  # check the CLI installation
-codeccli build  # triggers the build of the CodeC container image
+cd codex
+./codexcli install  # installs the CodeC CLI tool
+codexcli help  # check the CLI installation
+codexcli build  # triggers the build of the CodeC container image
 ```
 
 ## Proxy setup
@@ -142,8 +142,8 @@ Now you are ready to start a CodeC container!
 
 ![CodeC works](./docs/img/Success-Kid.png)
 
-Here is a explaination how to use the `codeccli start` to start a CodeC user container:
-[codeccli start](#start)
+Here is a explaination how to use the `codexcli start` to start a CodeC user container:
+[codexcli start](#start)
 
 
 
@@ -151,7 +151,7 @@ Here is a explaination how to use the `codeccli start` to start a CodeC user con
 CodeC is a containerized development environment that is built using different software components to create a unified environment. 
 
 ## CLI
-The CodeC CLI, also known as `codeccli`, is a provider CLI that allows a CodeC provider to control CodeC user containers on a host by starting or stopping them, modifying passwords, building or updating, and more. 
+The CodeC CLI, also known as `codexcli`, is a provider CLI that allows a CodeC provider to control CodeC user containers on a host by starting or stopping them, modifying passwords, building or updating, and more. 
 
 ### start
 
@@ -160,7 +160,7 @@ The CodeC CLI, also known as `codeccli`, is a provider CLI that allows a CodeC p
 To start or restart a CodeC user container, use the following command:
 
 ```bash
-codeccli start <USER_NAME> <START_PORT> <PORT_COUNT> <CODEC_PORT>
+codexcli start <USER_NAME> <START_PORT> <PORT_COUNT> <CODEC_PORT>
 ```
 
 Additional options for the start command include:
@@ -174,19 +174,19 @@ Additional options for the start command include:
 After the start the container opens the code-server on port 8080.
 You can access the code-server just with a configured proxy server.
 
-Login using the given password of the `codeccli` command or change it:
+Login using the given password of the `codexcli` command or change it:
 ![Login Hover](./docs/img/login-hover.png)
 
 ### pass
 Change the password of an existing users:
 ```bash
-codeccli pass <NAME>
+codexcli pass <NAME>
 ```
 
 ### build
 The following command builds the CodeC docker image. Since the build script is executed when the start command is used, the command usually does not need to be used.
 ```bash
-codeccli build
+codexcli build
 ```
 
 Additional options for the start command include:
@@ -195,19 +195,19 @@ Additional options for the start command include:
 ### list
 Show a list of all existing container users:
 ```bash
-codeccli list
+codexcli list
 ```
 
 ### logs
 Show the systemd and CodeC service logs of an existing and running user container:
 ```bash
-codeccli logs <NAME>
+codexcli logs <NAME>
 ```
 
 ### close
 Stop and remove an existing container:
 ```bash
-codeccli close <NAME>
+codexcli close <NAME>
 ```
 
 ### reset
@@ -215,13 +215,13 @@ codeccli close <NAME>
 
 Reset all files in /codec/mounts and /codec/.codec of an existing container:
 ```bash
-codeccli reset <NAME>
+codexcli reset <NAME>
 ```
 
 ### delete
 Delete all peristend CodeC user files and configurations:
 ```bash
-codeccli delete <NAME>
+codexcli delete <NAME>
 ```
 
 ## Proxy
@@ -245,7 +245,7 @@ In the context of CodeC, the image refers to the Docker image from which all Cod
 Additionally, it contains some persistent scripts that adapt all files to the CodeC persistence behavior.  
 Each user gets one running CodeC container instance based on the CodeC Docker image.
 
-The blueprint for the image is in the `Dockerfile` and can be built by the `codeccli` [build](#build) command.
+The blueprint for the image is in the `Dockerfile` and can be built by the `codexcli` [build](#build) command.
 
 ### Persistence
 
@@ -329,7 +329,7 @@ where some of them are ready to be used and some of them are just examples that 
 ##### Mod Status
 Enabled Mods are in the `/codec/.codec/enabled-mods` folder inside the user's persistent codec folder.  
 
-If you use the `codeccli` to enable a Mod the Mod Bash scripts get symlinked from the `mods` folder into the `enabled-mods` folder.  
+If you use the `codexcli` to enable a Mod the Mod Bash scripts get symlinked from the `mods` folder into the `enabled-mods` folder.  
 
 If you disable the Mod all scripts/symlinks of the Mod in the `/codec/.codec/enabled-mods` folder get deleted.
 

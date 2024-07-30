@@ -2,7 +2,7 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status.
 
-echo "[CODEC][TOOLS]: Downloading DevopsX..."
+echo "[CODEX][TOOLS]: Downloading DevopsX..."
 
 REPO="https://github.com/mystery000/devopsx.git"
 DIR="/devopsx"

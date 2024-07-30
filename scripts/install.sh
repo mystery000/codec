@@ -3,18 +3,18 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "[CODEC_CLI][INSTALL]: Need super user rights to install codeccli..."
-sudo echo "[CODEC_CLI][INSTALL]: Super user access granted!"
+echo "[CODEX_CLI][INSTALL]: Need super user rights to install codexcli..."
+sudo echo "[CODEX_CLI][INSTALL]: Super user access granted!"
 
-echo "test: $CODEC_BIN_INSTALL_PATH/codeccli"
-echo "test2: $CODEC_CLI_PATH $CODEC_BIN_INSTALL_PATH/codeccli"
+echo "test: $CODEC_BIN_INSTALL_PATH/codexcli"
+echo "test2: $CODEX_CLI_PATH $CODEC_BIN_INSTALL_PATH/codexcli"
 
-echo "[CODEC_CLI][INSTALL]: Install codeccli..."
-sudo rm -rf $CODEC_BIN_INSTALL_PATH/codeccli
-sudo ln -s $CODEC_CLI_PATH $CODEC_BIN_INSTALL_PATH/codeccli
+echo "[CODEX_CLI][INSTALL]: Install codexcli..."
+sudo rm -rf $CODEC_BIN_INSTALL_PATH/codexcli
+sudo ln -s $CODEX_CLI_PATH $CODEC_BIN_INSTALL_PATH/codexcli
 
 if [ "$1" != "-i" ] && [ "$1" != "--image" ]; then
-    echo "[CODEC_CLI][INSTALL]: Build codec image?"
+    echo "[CODEX_CLI][INSTALL]: Build codec image?"
     echo "If you also want to build and cache the newest codec image enter 'y'."
     read INPUT_VALUE
     if [ "$INPUT_VALUE" == "y" ]; then
@@ -22,4 +22,4 @@ if [ "$1" != "-i" ] && [ "$1" != "--image" ]; then
     fi
 fi
 
-echo "[CODEC_CLI][INSTALL]: Done!"
+echo "[CODEX_CLI][INSTALL]: Done!"

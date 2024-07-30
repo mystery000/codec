@@ -2,7 +2,7 @@
 
 CURRENT_DIR=$(dirname $(realpath $0))
 
-echo "-----[CodecCLI]-----"
+echo "-----[CodexCLI]-----"
 echo ""
 
 if [ -z $1 ]; then
@@ -93,7 +93,7 @@ elif [[ "$CMD" = st* ]]; then
 fi
 
 if [ ! -f "$CURRENT_DIR/scripts/$CMD.sh" ]; then
-    echo "CodecCLI command $CMD not found!"
+    echo "CodexCLI command $CMD not found!"
     echo ""
     echo "Help:"
     $CURRENT_DIR/scripts/help.sh

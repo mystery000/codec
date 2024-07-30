@@ -6,16 +6,16 @@ source $CURRENT_DIR/vars.sh
 $CURRENT_DIR/build.sh > /dev/null 2>&1 &
 BUILD_PID=$!
 
-echo "[CODEC_CLI][RERIGHT]: Reset user rights on .codec folder..."
+echo "[CODEX_CLI][RERIGHT]: Reset user rights on .codec folder..."
 docker run -it --rm \
-    --name "codeccli-reright" \
+    --name "codexcli-reright" \
     -v "$CODEC_USER_DATA/.codec:/app" \
     ubuntu:22.04 \
         bash -c \
             "chown -R root /app"
 
 docker run -it --rm \
-            --name "codeccli-start-port-reader" \
+            --name "codexcli-start-port-reader" \
             -v "$CODEC_USER_DATA/.codec:/app" \
             ubuntu:22.04 \
                 bash

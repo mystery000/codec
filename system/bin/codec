@@ -180,22 +180,22 @@ fi
 
 # if first argument is -w or --welcome, print welcome message and exit
 if [[ "$1" == "-w" || "$1" == "welcome" ]]; then
-    echo "                                                 "
-    echo "                           ▄▄                    "
-    echo "  ▄▄█▀▀▀█▄█              ▀███           ▄▄█▀▀▀█▄█"
-    echo "▄██▀     ▀█                ██         ▄██▀     ▀█"
-    echo "██▀       ▀ ▄██▀██▄   ▄█▀▀███   ▄▄█▀████▀       ▀"
-    echo "██         ██▀   ▀██▄██    ██  ▄█▀   ███         "
-    echo "█▓▄        ██     ███▓█    █▓  ▓█▀▀▀▀▀▀▓▄        "
-    echo "▀▓█▄     ▄▀██     ▓█▀▓█    █▓  ▓█▄    ▄▓█▄     ▄▀"
-    echo "▓▓▓        ▓█     ▓▓▓▓▓    ▓▓  ▓▓▀▀▀▀▀▀▓▓        "
-    echo "▒▓▓▒     ▓▀▓▓▓   ▓▓▓▀▒▓    ▓▒  ▒▓▓    ▒▓▓▒     ▓▀"
-    echo "  ▒ ▒ ▒ ▒▓  ▒ ▒ ▒ ▓  ▒ ▒ ▒ ▓ ▒  ▒ ▒ ▒▒  ▓ ▒ ▒ ▒▓ "
-    echo "  ▒ ▒   ▒▒  ▒     ▒        ▓    ▒    ▒  ▒ ▒    ▒ "
-    echo "  ▒      ▒        ▒        ▒    ▒       ▒        "
-    echo "                  ▒        ▒   by Mohamed Hafeel "
-    echo " Welcome to CodeC          ▒      & Computer.com "
-    echo "                                                 "
+    echo "                                                      "
+    echo "                           ▄▄                         "
+    echo "  ▄▄█▀▀▀█▄█              ▀███         ▀▀██      ██▀▀  "
+    echo "▄██▀     ▀█                ██            ██    ██     "
+    echo "██▀       ▀ ▄██▀██▄   ▄█▀▀███   ▄▄█▀████▀  ██ ██      "
+    echo "██         ██▀   ▀██▄██    ██  ▄█▀    ██    ██        "
+    echo "█▓▄        ██     ███▓█    █▓  ▓█▀▀▀▀▀▀▓▄  ██ ██      "
+    echo "▀▓█▄     ▄▀██     ▓█▀▓█    █▓  ▓█▄       ██    ██     "
+    echo "▓▓▓        ▓█     ▓▓▓▓▓    ▓▓  ▓▓▀▀▀▀▀▀▓▓██     ██    "
+    echo "▒▓▓▒     ▓▀▓▓▓   ▓▓▓▀▒▓    ▓▒  ▒▓▓    ▒▓▓█       ▓▓▓  "
+    echo "  ▒ ▒ ▒ ▒▓  ▒ ▒ ▒ ▓  ▒ ▒ ▒ ▓ ▒  ▒ ▒ ▒▒  ▓ ▒ ▒ ▒▓  ▒ ▒ " 
+    echo "  ▒ ▒   ▒▒  ▒     ▒        ▓    ▒    ▒  ▒ ▒    ▒  ▒ ▒ "
+    echo "  ▒      ▒        ▒        ▒    ▒       ▒         ▒   "
+    echo "                  ▒        ▒   by Mohamed Hafeel      "
+    echo " Welcome to CodeC          ▒      & Computer.com      "
+    echo "                                                      "
     exit 0
 fi
 

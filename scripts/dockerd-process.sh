@@ -4,11 +4,11 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][DOCKERD_PROCESS]: No codec user defined!"
+    echo "[CODEX_CLI][DOCKERD_PROCESS]: No codec user defined!"
     exit 1
 fi
 
-echo "[CODEC_CLI][DOCKERD_PROCESS]: Start docker daemon..."
+echo "[CODEX_CLI][DOCKERD_PROCESS]: Start docker daemon..."
 
 CODEC_USER=$1
 CODEC_DOCKERD_DIR="$CODEC_USER_DATA/.codec/dockerd/"
@@ -28,4 +28,4 @@ done
 $CURRENT_DIR/dockerd-stop.sh $CODEC_USER
 kill -s SIGKILL $CODEC_DOCKERD_PID
 
-echo "[CODEC_CLI][DOCKERD_PROCESS]: dockerd exit!"
+echo "[CODEX_CLI][DOCKERD_PROCESS]: dockerd exit!"

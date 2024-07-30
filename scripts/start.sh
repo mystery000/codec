@@ -7,7 +7,7 @@ $CURRENT_DIR/build.sh > /dev/null 2>&1 &
 BUILD_PID=$!
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][START]: No codec user defined!"
+    echo "[CODEX_CLI][START]: No codec user defined!"
     exit 1
 fi
 
@@ -33,10 +33,10 @@ if (( PORT_COUNT > $MAX_ALLOED_CODEC_PORTS )) || (( PORT_COUNT < 1 )); then
 fi
 
 if [ -z $START_PORT ]; then
-    docker rm -f codeccli-start-port-reader > /dev/null 2>&1
+    docker rm -f codexcli-start-port-reader > /dev/null 2>&1
     START_PORT="$(
         docker run -it --rm \
-            --name "codeccli-start-port-reader" \
+            --name "codexcli-start-port-reader" \
             -v "$CODEC_USER_DATA/.codec/ports:/app" \
             ubuntu:22.04 \
                 bash -c \
@@ -46,19 +46,19 @@ if [ -z $START_PORT ]; then
                 "
     )"
     if [ -z $START_PORT ]; then
-        echo "[CODEC_CLI][START]: Start port not defined!"
+        echo "[CODEX_CLI][START]: Start port not defined!"
         exit 1
     fi
 fi
-echo "[CODEC_CLI][START]: Defined start port is:"
+echo "[CODEX_CLI][START]: Defined start port is:"
 echo "'$START_PORT'"
 
 if [ -z $PORT_COUNT ]; then
-    docker rm -f codeccli-end-port-reader > /dev/null 2>&1
+    docker rm -f codexcli-end-port-reader > /dev/null 2>&1
 
     PORT_COUNT="$(
         docker run -it --rm \
-            --name "codeccli-end-port-reader" \
+            --name "codexcli-end-port-reader" \
             -v "$CODEC_USER_DATA/.codec/ports:/app" \
             ubuntu:22.04 \
                 bash -c \
@@ -69,34 +69,34 @@ if [ -z $PORT_COUNT ]; then
     fi
 fi
 
-echo "[CODEC_CLI][START]: Defined port count is:"
+echo "[CODEX_CLI][START]: Defined port count is:"
 echo "'$PORT_COUNT'"
 
 if (( START_PORT > 65535 )); then
-    echo "[CODEC_CLI][START]: The start port '$START_PORT' is not in the port range (1-65535)!"
+    echo "[CODEX_CLI][START]: The start port '$START_PORT' is not in the port range (1-65535)!"
     exit 1
 fi
 if (( START_PORT < 1 )); then
-    echo "[CODEC_CLI][START]: The start port '$START_PORT' is not in the port range (1-65535)!"
+    echo "[CODEX_CLI][START]: The start port '$START_PORT' is not in the port range (1-65535)!"
     exit 1
 fi
 if (( PORT_COUNT > $MAX_ALLOED_CODEC_PORTS )); then
-    echo "[CODEC_CLI][START]: The port count '$PORT_COUNT' is greater then the maximum allowed count of ports '$MAX_ALLOED_CODEC_PORTS'!"
+    echo "[CODEX_CLI][START]: The port count '$PORT_COUNT' is greater then the maximum allowed count of ports '$MAX_ALLOED_CODEC_PORTS'!"
     exit 1
 fi
 if (( PORT_COUNT < 1 )); then
-    echo "[CODEC_CLI][START]: The port counts needs to be minimum '1'!"
+    echo "[CODEX_CLI][START]: The port counts needs to be minimum '1'!"
     exit 1
 fi
 
 END_PORT=$(($START_PORT+$PORT_COUNT-1))
 
 if (( END_PORT > 65535 )); then
-    echo "[CODEC_CLI][START]: The end port '$END_PORT' is not in the port range (1-65535)!"
+    echo "[CODEX_CLI][START]: The end port '$END_PORT' is not in the port range (1-65535)!"
     exit 1
 fi
 if (( END_PORT < 1 )); then
-    echo "[CODEC_CLI][START]: The end port '$END_PORT' is not in the port range (1-65535)!"
+    echo "[CODEX_CLI][START]: The end port '$END_PORT' is not in the port range (1-65535)!"
     exit 1
 fi
 
@@ -106,7 +106,7 @@ DOCKER_START_CMD=" \
     docker run -d \
         --privileged \
         --name 'codec_$CODEC_USER' \
-        --net '$CODEC_NET' \
+        --net '$CODEX_NET' \
         --restart unless-stopped \
         -p '0.0.0.0:$CODEC_PORT:8080' \
         -p '0.0.0.0:$START_PORT-$END_PORT:$START_PORT-$END_PORT/tcp' \
@@ -117,10 +117,10 @@ DOCKER_START_CMD=" \
         -v '$CODEC_USER_DATA/.codec/shared_folder:/codec/mounts/shared' \
         -v '$CODEC_USER_DATA/$CODEC_USER:/codec' \
         -v '/home/debian/.config/devopsx:/root/.config/devopsx' \
-        codec2 \
+        codex \
 "
 
-echo "[CODEC_CLI][START]: Docker run command preview: '"
+echo "[CODEX_CLI][START]: Docker run command preview: '"
 echo "$DOCKER_START_CMD"
 echo "'"
 
@@ -134,7 +134,7 @@ if [ "$CODEC_USER" != "$FLAG_NAME" ] && [ "$CODEC_USER" != "$FLAG_SHORTNAME" ] &
     [ "$4" != "$FLAG_SHORTNAME" ] && [ "$5" != "$FLAG_SHORTNAME" ] &&
     [ "$6" != "$FLAG_SHORTNAME" ] && [ "$7" != "$FLAG_SHORTNAME" ]; then
     echo ""
-    echo "[CODEC_CLI][START]: "
+    echo "[CODEX_CLI][START]: "
     echo "####### CONTAINER DATA #######"
     echo "#    Ports: '$START_PORT-$END_PORT'"
     echo "# Datapath: '$CODEC_USER_DATA/$CODEC_USER/'"
@@ -148,28 +148,28 @@ if [ "$CODEC_USER" != "$FLAG_NAME" ] && [ "$CODEC_USER" != "$FLAG_SHORTNAME" ] &
     fi
 fi
 
-echo "[CODEC_CLI][START]: Wait for image building..."
+echo "[CODEX_CLI][START]: Wait for image building..."
 while kill -0 $BUILD_PID >/dev/null 2>&1; do
     sleep 1
 done
-echo "[CODEC_CLI][START]: Image ready!"
+echo "[CODEX_CLI][START]: Image ready!"
 
 $CURRENT_DIR/close.sh $CODEC_USER
 
-docker network create "$CODEC_NET" > /dev/null 2>&1
+docker network create "$CODEX_NET" > /dev/null 2>&1
 
-echo "[CODEC_CLI][START]: Run docker container..."
+echo "[CODEX_CLI][START]: Run docker container..."
 bash -c "$DOCKER_START_CMD"
 
-#echo "[CODEC_CLI][START]: Run docker daemon..."
+#echo "[CODEX_CLI][START]: Run docker daemon..."
 #$CURRENT_DIR/dockerd.sh $CODEC_USER
 
-echo "[CODEC_CLI][START]: Set port user info..."
+echo "[CODEX_CLI][START]: Set port user info..."
 PORT_INFO_TEXT="Your codec ports: codec.coreunit.net:$START_PORT-$END_PORT"
 
-docker rm -f codeccli-info-helper > /dev/null 2>&1
+docker rm -f codexcli-info-helper > /dev/null 2>&1
 docker run -it --rm \
-    --name "codeccli-info-helper" \
+    --name "codexcli-info-helper" \
     -v "$CODEC_USER_DATA/$CODEC_USER:/codec" \
     ubuntu:22.04 \
         bash -c \
@@ -180,10 +180,10 @@ docker run -it --rm \
         && chmod 744 /codec/.codec \
         "
 
-echo "[CODEC_CLI][START]: Save startup arguments..."
-docker rm -f codeccli-port-helper > /dev/null 2>&1
+echo "[CODEX_CLI][START]: Save startup arguments..."
+docker rm -f codexcli-port-helper > /dev/null 2>&1
 docker run -it --rm \
-    --name "codeccli-port-helper" \
+    --name "codexcli-port-helper" \
     -v "$CODEC_USER_DATA/.codec:/app" \
     ubuntu:22.04 \
         bash -c \
@@ -196,7 +196,7 @@ docker run -it --rm \
         "
 
 if [ "$ALREADY_EXIST" == "false" ]; then
-    echo "[CODEC_CLI][START]: Set new random generated password..."
+    echo "[CODEX_CLI][START]: Set new random generated password..."
     NEW_DEFAULT_PASS="$($CURRENT_DIR/randompass.sh $CODEC_USER)"
     $CURRENT_DIR/defaultpass.sh $CODEC_USER "$NEW_DEFAULT_PASS"
     $CURRENT_DIR/setpass.sh $CODEC_USER "$NEW_DEFAULT_PASS"
@@ -204,4 +204,4 @@ if [ "$ALREADY_EXIST" == "false" ]; then
     echo "Default password is: '$NEW_DEFAULT_PASS'"
 fi
 
-echo "[CODEC_CLI][START]: Finished!"
+echo "[CODEX_CLI][START]: Finished!"

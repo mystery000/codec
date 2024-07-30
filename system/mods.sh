@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[CODEC][MOD]: Load mods..."
+echo "[CODEX][MOD]: Load mods..."
 
 ENABLED_MODS_PATH="/codec/.codec/enabled-mods"
 OPTIONAL_MODS_PATH="/codec/.codec/mods"
@@ -43,18 +43,18 @@ if [[ "$1" == "-q" || "$1" == "--quit" || "$1" == "quit" ]]; then
     for QUIT_MOD_PATH in $QUIT_MOD_PATHS; do
         QUIT_MOD_NAME=$(basename "$QUIT_MOD_PATH")
         QUIT_MOD_LOGS_PATH=$LOGS_PATH/mod.$QUIT_MOD_NAME.quit.log
-        echo "[CODEC][MOD][QUIT]: Load '$QUIT_MOD_NAME' for quit"
+        echo "[CODEX][MOD][QUIT]: Load '$QUIT_MOD_NAME' for quit"
         touch $QUIT_MOD_LOGS_PATH
         source $QUIT_MOD_PATH > $QUIT_MOD_LOGS_PATH
-        echo "[CODEC][MOD][QUIT]: '$QUIT_MOD_NAME' loaded!"
+        echo "[CODEX][MOD][QUIT]: '$QUIT_MOD_NAME' loaded!"
     done
 
-    echo "[CODEC][MOD][QUIT]: All finished!"
+    echo "[CODEX][MOD][QUIT]: All finished!"
 
     exit 0
 fi
 
-echo "[CODEC][MOD]: $MOD_COUNTER mods found!"
+echo "[CODEX][MOD]: $MOD_COUNTER mods found!"
 
 export CODEC_ALL_APT_PACKAGES=""
 export CODEC_ALL_NPM_PACKAGES=""
@@ -63,10 +63,10 @@ source /codec/.codec/env.sh > $LOGS_PATH/user.env.log
 for ENV_MOD_PATH in $ENV_MOD_PATHS; do
     ENV_MOD_NAME=$(basename "$ENV_MOD_PATH")
     ENV_MOD_LOGS_PATH=$LOGS_PATH/mod.$ENV_MOD_NAME.env.log
-    echo "[CODEC][MOD][ENV]: Load '$ENV_MOD_NAME' env"
+    echo "[CODEX][MOD][ENV]: Load '$ENV_MOD_NAME' env"
     touch $ENV_MOD_LOGS_PATH
     source $ENV_MOD_PATH > $ENV_MOD_LOGS_PATH
-    echo "[CODEC][MOD][ENV]: '$ENV_MOD_NAME' loaded!"
+    echo "[CODEX][MOD][ENV]: '$ENV_MOD_NAME' loaded!"
     if [ "$CODEC_APT_PACKAGES" != "" ]; then
         if [ "$CODEC_ALL_APT_PACKAGES" != "" ]; then
             export CODEC_ALL_APT_PACKAGES="$CODEC_ALL_APT_PACKAGES $CODEC_APT_PACKAGES"
@@ -89,26 +89,26 @@ done
 
 apt-get update
 if [ "$CODEC_ALL_APT_PACKAGES" != "" ]; then
-    echo "[CODEC][MOD][APT]: Install following packages:"
+    echo "[CODEX][MOD][APT]: Install following packages:"
     echo "'$CODEC_ALL_APT_PACKAGES'"
     apt-get install -y --no-install-recommends $CODEC_ALL_APT_PACKAGES
 else 
-    echo "[CODEC][MOD][APT]: No apt packages defined!"
+    echo "[CODEX][MOD][APT]: No apt packages defined!"
 fi
 
 if [ "$CODEC_ALL_NPM_PACKAGES" != "" ]; then
-    echo "[CODEC][MOD][NPM]: Install following packages:"
+    echo "[CODEX][MOD][NPM]: Install following packages:"
     echo "'$CODEC_ALL_NPM_PACKAGES'"
     npm i -g $CODEC_ALL_NPM_PACKAGES
 else 
-    echo "[CODEC][MOD][NPM]: No npm packages defined!"
+    echo "[CODEX][MOD][NPM]: No npm packages defined!"
 fi
 
 for BOOT_MOD_PATH in $BOOT_MOD_PATHS; do
     BOOT_MOD_NAME=$(basename "$BOOT_MOD_PATH")
     BOOT_MOD_LOGS_PATH=$LOGS_PATH/mod.$BOOT_MOD_NAME.boot.log
-    echo "[CODEC][MOD][BOOT]: Start '$BOOT_MOD_NAME'..."
+    echo "[CODEX][MOD][BOOT]: Start '$BOOT_MOD_NAME'..."
     touch $BOOT_MOD_LOGS_PATH
     $BOOT_MOD_PATH > $BOOT_MOD_LOGS_PATH
-    echo "[CODEC][MOD][BOOT]: '$BOOT_MOD_NAME' done!"
+    echo "[CODEX][MOD][BOOT]: '$BOOT_MOD_NAME' done!"
 done

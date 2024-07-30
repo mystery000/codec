@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -z "$CODEC_NET" ]; then
-    export CODEC_NET="ff_codec_net"
+if [ -z "$CODEX_NET" ]; then
+    export CODEX_NET="codex_net"
 fi
 
 if [ -z "$CODEC_BIN_INSTALL_PATH" ]; then
@@ -9,7 +9,7 @@ if [ -z "$CODEC_BIN_INSTALL_PATH" ]; then
 fi
 
 export CURRENT_DIR=$(dirname $(realpath $0))
-export CODEC_CLI_PATH=$(realpath "$CURRENT_DIR/../codeccli")
+export CODEC_CLI_PATH=$(realpath "$CURRENT_DIR/../codexcli")
 
 if [ -z "$CODEC_USER_DATA" ]; then
     export CODEC_USER_DATA="$CURRENT_DIR/../codec-data"

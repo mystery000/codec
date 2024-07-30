@@ -3,7 +3,7 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "[CODEC_CLI][USERS]: Load codec container user list..."
+echo "[CODEX_CLI][USERS]: Load codec container user list..."
 USER_LIST=$(
     docker run -it --rm \
         -v "$CODEC_USER_DATA:/app" \
@@ -21,7 +21,7 @@ for USER_FOLDER in ${USER_LIST[@]}; do
     USER_ARR+=($(echo -n "${USER_FOLDER:1:-1}"))
 done
 
-echo "[CODEC_CLI][USERS]: Existing user folder:"
+echo "[CODEX_CLI][USERS]: Existing user folder:"
 for USER_NAME in ${USER_ARR[@]}; do
     echo " - '$USER_NAME'"
 done

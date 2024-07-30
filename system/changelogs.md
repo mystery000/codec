@@ -93,7 +93,7 @@ First version with big breaking changes, new folder structure, build in systemd 
 - Provider scripts and login page
 
 ## Sep 25, 2022
-- Add CodecCLI feature to cache user ports
+- Add CodexCLI feature to cache user ports
 - Change Code Server version and disable README feature
 
 ## Sep 11, 2022
@@ -104,10 +104,10 @@ First version with big breaking changes, new folder structure, build in systemd 
 
 ## Sep 5, 2022
 - Fix container crash on set password
-- Improve CodecCLI install and uninstall command
+- Improve CodexCLI install and uninstall command
 - Improve login, build time, and start time
-- Improve exist and start CodecCLI cmd
-- Run CodecCLI as root
+- Improve exist and start CodexCLI cmd
+- Run CodexCLI as root
 - Add nice custom login page
 - Improve input
 

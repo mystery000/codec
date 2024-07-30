@@ -4,12 +4,12 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][RESET]: No codec user defined!"
+    echo "[CODEX_CLI][RESET]: No codec user defined!"
     exit 1
 fi
 
 if [ "$2" != "-f" ] && [ "$2" != "--force" ]; then
-    echo "[CODEC_CLI][RESET]: Reset codec user data of '$1'?"
+    echo "[CODEX_CLI][RESET]: Reset codec user data of '$1'?"
     echo "Type 'y' to delete the codec user '$1'"
     echo "Userdata at:'$CODEC_USER_DATA/$1/.codec'"
     read INPUT_VALUE

@@ -4,7 +4,7 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEC_CLI][EXIST]: No codec user defined!"
+    echo "[CODEX_CLI][EXIST]: No codec user defined!"
     exit 1
 fi
 

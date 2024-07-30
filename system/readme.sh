@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-echo "[CODEC][README]: Init..."
+echo "[CODEX][README]: Init..."
 touch /codec/.codec/readme.md
 
 if [ -f "/codec/.codec/readme.md" ]; then
   if [ "$(cat /etc/codec/readme.md)" == "$(cat /codec/.codec/readme.md)" ]; then
-    echo "[CODEC][README]: No changes."
+    echo "[CODEX][README]: No changes."
     exit 0
   fi
 fi
