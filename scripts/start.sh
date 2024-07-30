@@ -23,7 +23,6 @@ fi
 
 START_PORT="$2"
 PORT_COUNT="$3"
-CODEX_PORT="$4"
 
 if (( START_PORT > 65535 )) || (( START_PORT < 1 )); then
     START_PORT=""
@@ -176,7 +175,7 @@ bash -c "$DOCKER_START_CMD"
 #$CURRENT_DIR/dockerd.sh $CODEX_USER
 
 echo "[CODEX_CLI][START]: Set port user info..."
-PORT_INFO_TEXT="Your codex ports: codex.coreunit.net:$START_PORT-$END_PORT"
+# PORT_INFO_TEXT="Your codex ports: codex.coreunit.net:$START_PORT-$END_PORT"
 
 docker rm -f codexcli-info-helper > /dev/null 2>&1
 docker run -it --rm \
@@ -187,9 +186,20 @@ docker run -it --rm \
         " \
         mkdir -p /codex/.codex && \
         chmod 777 /codex/.codex && \
-        echo '$PORT_INFO_TEXT' > /codex/.codex/ports.info.txt \
-        && chmod 744 /codex/.codex \
+        chmod 744 /codex/.codex \
         "
+
+# docker run -it --rm \
+#     --name "codexcli-info-helper" \
+#     -v "$CODEX_USER_DATA/$CODEX_USER:/codex" \
+#     ubuntu:22.04 \
+#         bash -c \
+#         " \
+#         mkdir -p /codex/.codex && \
+#         chmod 777 /codex/.codex && \
+#         echo '$PORT_INFO_TEXT' > /codex/.codex/ports.info.txt \
+#         && chmod 744 /codex/.codex \
+#         "
 
 echo "[CODEX_CLI][START]: Save startup arguments..."
 docker rm -f codexcli-port-helper > /dev/null 2>&1

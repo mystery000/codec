@@ -54,8 +54,8 @@ rm -rf /usr/lib/code-server/src/browser/pages
 ln -s /etc/codex/login /usr/lib/code-server/src/browser/pages
 echo "Linked: '/usr/lib/code-server/src/browser'"
 
-/etc/codex/readme.sh
-/etc/codex/changelogs.sh
+# /etc/codex/readme.sh
+# /etc/codex/changelogs.sh
 
 echo "[CODEX][HEALTH]: Linking home 'ws' dir..."
 rm -rf /root/ws
