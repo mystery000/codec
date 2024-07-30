@@ -4,7 +4,7 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][DEFAULTPASS]: No codec user defined!"
+    echo "[CODEX_CLI][DEFAULTPASS]: No codex user defined!"
     exit 1
 fi
 
@@ -22,7 +22,7 @@ echo "[CODEX_CLI][DEFAULTPASS]: Default password hash..."
 docker rm -f codexcli-hash-helper > /dev/null 2>&1
 docker run -it --rm \
     --name "codexcli-hash-helper" \
-    -v "$CODEC_USER_DATA/.codec:/app" \
+    -v "$CODEX_USER_DATA/.codex:/app" \
     ubuntu:22.04 \
         bash -c \
         "mkdir -p /app/hash \

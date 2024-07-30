@@ -24,10 +24,10 @@ else
     echo "Background process id: '$BUILD_PID'"
 fi
 
-echo "[CODEX_CLI][UPDATEALL]: Load codec container user list..."
+echo "[CODEX_CLI][UPDATEALL]: Load codex container user list..."
 USER_LIST=$(
     docker run -it --rm \
-        -v "$CODEC_USER_DATA:/app" \
+        -v "$CODEX_USER_DATA:/app" \
         -w /app \
         ubuntu:22.04 \
             ls -AQ
@@ -36,14 +36,14 @@ USER_LIST=$(
 USER_LIST=${USER_LIST::-1}
 USER_ARR=()
 for USER_FOLDER in ${USER_LIST[@]}; do
-    if [ $USER_FOLDER == '".codec"' ]; then
+    if [ $USER_FOLDER == '".codex"' ]; then
         continue
     fi
     USER_ARR+=($(echo -n "${USER_FOLDER:1:-1}"))
 done
 
 if [ "${#USER_ARR[@]}" == "0" ]; then
-    echo "[CODEX_CLI][UPDATEALL]: No codec user exists!"
+    echo "[CODEX_CLI][UPDATEALL]: No codex user exists!"
     exit 1
 fi
 
@@ -66,7 +66,7 @@ if [ "$1" == "$FLAG_NAME" ] ||  [ "$1" == "$FLAG_SHORTNAME" ]  ||
     [ "$6" == "$FLAG_SHORTNAME" ] || [ "$7" == "$FLAG_SHORTNAME" ]; then
     echo "[CODEX_CLI][UPDATEALL]: Force update all containers!"
 else
-    echo "# Enter 'y' to start the '${#USER_ARR[@]}' codec user containers."
+    echo "# Enter 'y' to start the '${#USER_ARR[@]}' codex user containers."
     echo "# [CTRL] + [C] to abort!"
     read INPUT_VALUE
     if [ "$INPUT_VALUE" != "y" ]; then

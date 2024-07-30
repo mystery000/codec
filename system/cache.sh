@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 echo "[CODEX][CACHE]: Clear vscode cache files..."
-rm -rf /codec/mounts/vscode/User/caches
-rm -rf /codec/mounts/vscode/logs
-rm -rf /codec/mounts/vscode/CachedExtensions
-rm -rf /codec/mounts/vscode/coder-logs
-rm -rf /codec/mounts/vscode/User/customBuiltinExtensionsCache.json
+rm -rf /codex/mounts/vscode/User/caches
+rm -rf /codex/mounts/vscode/logs
+rm -rf /codex/mounts/vscode/CachedExtensions
+rm -rf /codex/mounts/vscode/coder-logs
+rm -rf /codex/mounts/vscode/User/customBuiltinExtensionsCache.json
 rm -rf /tmp/*
 

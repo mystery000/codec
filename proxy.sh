@@ -24,7 +24,7 @@ docker run -itd --rm \
     majo418/cprox \
         "/app/dist/index.js" \
         "discord.coreunit.net=REDIRECT:https://discord.gg/pwHNaHRa9W" \
-        "*.codec.coreunit.net=PROXY:http://codec_{-4}:8080" \
+        "*.codex.coreunit.net=PROXY:http://codex_{-4}:8080" \
         "majo.coreunit.net=REDIRECT:https://github.com/majo418" \
         "coreunit.net=REDIRECT:https://discord.gg/pwHNaHRa9W"
 

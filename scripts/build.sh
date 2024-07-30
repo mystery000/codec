@@ -16,7 +16,7 @@ if [ "$1" == "$FLAG_NAME" ] ||  [ "$1" == "$FLAG_SHORTNAME" ]  ||
     [ "$6" == "$FLAG_NAME" ] || [ "$7" == "$FLAG_NAME" ] ||
     [ "$4" == "$FLAG_SHORTNAME" ] || [ "$5" == "$FLAG_SHORTNAME" ] ||
     [ "$6" == "$FLAG_SHORTNAME" ] || [ "$7" == "$FLAG_SHORTNAME" ]; then
-    echo "[CODEX_CLI][BUILD]: Build codec image form scratch..."
+    echo "[CODEX_CLI][BUILD]: Build codex image form scratch..."
 
     docker build \
         --pull \
@@ -30,7 +30,7 @@ fi
 
 
 
-echo "[CODEX_CLI][BUILD]: Build codec image..."
+echo "[CODEX_CLI][BUILD]: Build codex image..."
 
 docker build \
     -t codex \

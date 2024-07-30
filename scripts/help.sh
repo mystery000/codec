@@ -3,9 +3,9 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "CodeC - VS Code Container"
+echo "CodeX - VS Code Container"
 echo "- A VS Code Docker Container Image"
-echo "- by Majo418 (See GitHub)"
+echo "- by Mohamed Hafeel (See GitHub)"
 echo "- based on coder/code-server (See GitHub)"
 echo "- based on docker (See GitHub)"
 echo ""

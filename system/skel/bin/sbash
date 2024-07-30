@@ -2,7 +2,7 @@
 
 if [ "$(screen-alive 'sbash')" == "false" ] ; then
     echo "create screen..."
-    screen -SU sbash sudo -u codec bash
+    screen -SU sbash sudo -u codex bash
 else
     echo "enter screen..."
     screen -xU sbash

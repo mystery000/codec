@@ -1,5 +1,5 @@
 {
-    "logs/codec": "/etc/codec/logs",
+    "logs/codex": "/etc/codex/logs",
     "ssh": "/root/.ssh",
     "vscode": "/root/.local/share/code-server",
     "docker-user": "/root/.docker/",

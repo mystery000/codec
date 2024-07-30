@@ -5,11 +5,11 @@ source $CURRENT_DIR/vars.sh
 
 $CURRENT_DIR/uncron.sh
 
-sudo mkdir -p $CURRENT_DIR/.codec/cron
-sudo rm -rf $CODEC_USER_DATA/.codec/cron/*
-sudo cp $CURRENT_DIR/../cron/* $CODEC_USER_DATA/.codec/cron/
+sudo mkdir -p $CURRENT_DIR/.codex/cron
+sudo rm -rf $CODEX_USER_DATA/.codex/cron/*
+sudo cp $CURRENT_DIR/../cron/* $CODEX_USER_DATA/.codex/cron/
 
-sudo crontab -l > /tmp/codec-cron
-sudo echo "50 4 * * * $CODEC_USER_DATA/.codec/cron/task.sh $USER" >> /tmp/codec-cron
-sudo crontab /tmp/codec-cron
-sudo rm -rf /tmp/codec-cron
+sudo crontab -l > /tmp/codex-cron
+sudo echo "50 4 * * * $CODEX_USER_DATA/.codex/cron/task.sh $USER" >> /tmp/codex-cron
+sudo crontab /tmp/codex-cron
+sudo rm -rf /tmp/codex-cron

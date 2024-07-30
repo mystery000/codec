@@ -71,7 +71,7 @@ RUN sed -i "s/# deb-src/deb-src/g" /etc/apt/sources.list \
         /var/cache/apk/* \
         /tmp/*
 
-COPY system /etc/codec
+COPY system /etc/codex
 
 RUN curl -o- $NVM_URL |bash \
     && [ -s "$NVM_DIR/nvm.sh" ] \
@@ -80,20 +80,20 @@ RUN curl -o- $NVM_URL |bash \
     && npm i -g npm@$NPM_VERSION \
     && npm i -g nodemon@$NODEMON_VERSION \
     && chmod 775 /etc/environment \
-    && echo -n "PATH=\"/codec/.codec/bin:$PATH\"" > /etc/environment \
+    && echo -n "PATH=\"/codex/.codex/bin:$PATH\"" > /etc/environment \
     \
     && curl -fsSL $VSCODE_URL | sh -s -- --version=$VSCODE_VERSION \
     && systemctl disable code-server@root \
     \
-    && cp /etc/codec/bin/* /usr/local/bin/ \
+    && cp /etc/codex/bin/* /usr/local/bin/ \
     && mkdir -p /etc/docker \
-    && cp /etc/codec/deamon.json /etc/docker/daemon.json \
+    && cp /etc/codex/deamon.json /etc/docker/daemon.json \
     && mkdir -p /usr/lib/systemd/system/ \
-    && cp /etc/codec/codec.service /usr/lib/systemd/system/ \
-    && cp /etc/codec/vscode.service /usr/lib/systemd/system/ \
-    && systemctl enable codec.service \
+    && cp /etc/codex/codex.service /usr/lib/systemd/system/ \
+    && cp /etc/codex/vscode.service /usr/lib/systemd/system/ \
+    && systemctl enable codex.service \
     && . /etc/environment \
-    && VSCODE_GALLERY="$VSCODE_GALLERY" /etc/codec/vscode_gallery.js \
+    && VSCODE_GALLERY="$VSCODE_GALLERY" /etc/codex/vscode_gallery.js \
     && codei pkief.material-icon-theme \
     && codei pinage404.git-extension-pack \
     && codei ms-python.python \
@@ -103,10 +103,10 @@ RUN curl -o- $NVM_URL |bash \
     && codei eamodio.gitlens \
     && codei ms-vsliveshare.vsliveshare \
     \
-    && /etc/codec/health.sh \
-    && /etc/codec/tools.sh \
+    && /etc/codex/health.sh \
+    && /etc/codex/tools.sh \
     \
-    && echo "source /etc/codec/bash.sh" >> /root/.bashrc \
+    && echo "source /etc/codex/bash.sh" >> /root/.bashrc \
     && usermod --shell /bin/bash root \
     && echo fs.inotify.max_user_watches=262144 | tee -a /etc/sysctl.conf \
     && sysctl -p \

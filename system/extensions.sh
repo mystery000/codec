@@ -2,7 +2,7 @@
 
 echo "[CODEX][EXTENSION]: Set vscode extension store..." 
 export VSCODE_GALLERY=ms2
-/etc/codec/vscode_gallery.js
+/etc/codex/vscode_gallery.js
 
 echo "[CODEX][EXTENSION]: Install default extensions..." 
 

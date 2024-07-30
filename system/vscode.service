@@ -1,10 +1,10 @@
 [Unit]
-Description=codec vscode
+Description=codex vscode
 After=network.target
 
 [Service]
 Type=exec
-ExecStart=/usr/bin/code-server --disable-telemetry --auth password --bind-addr 0.0.0.0:8080 /codec/.codec/default.code-workspace
+ExecStart=/usr/bin/code-server --disable-telemetry --auth password --bind-addr 0.0.0.0:8080 /codex/.codex/default.code-workspace
 Restart=always
 User=root
 

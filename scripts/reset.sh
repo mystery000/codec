@@ -4,14 +4,14 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][RESET]: No codec user defined!"
+    echo "[CODEX_CLI][RESET]: No codex user defined!"
     exit 1
 fi
 
 if [ "$2" != "-f" ] && [ "$2" != "--force" ]; then
-    echo "[CODEX_CLI][RESET]: Reset codec user data of '$1'?"
-    echo "Type 'y' to delete the codec user '$1'"
-    echo "Userdata at:'$CODEC_USER_DATA/$1/.codec'"
+    echo "[CODEX_CLI][RESET]: Reset codex user data of '$1'?"
+    echo "Type 'y' to delete the codex user '$1'"
+    echo "Userdata at:'$CODEX_USER_DATA/$1/.codex'"
     read INPUT_VALUE
     if [ "$INPUT_VALUE" != "y" ]; then
         echo "Abort because input was not 'y'!"
@@ -21,11 +21,11 @@ fi
 
 $CURRENT_DIR/close.sh "$1"
 
-echo "Delete '/codec/.codec' for '$1'..."
+echo "Delete '/codex/.codex' for '$1'..."
 docker run -it --rm \
-    -v "$CODEC_USER_DATA/$1:/app" \
+    -v "$CODEX_USER_DATA/$1:/app" \
     ubuntu:22.04 \
-        bash -c 'mv "/app/.codec/vscode-server.yaml" "/vscode-server.yaml" \
-        && rm -rf "/app/.codec/*" \
-        && mv "/vscode-server.yaml" "/app/.codec/"'
+        bash -c 'mv "/app/.codex/vscode-server.yaml" "/vscode-server.yaml" \
+        && rm -rf "/app/.codex/*" \
+        && mv "/vscode-server.yaml" "/app/.codex/"'
 

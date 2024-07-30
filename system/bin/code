@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]; then
-    set "$1" "/codec/.codec/default.code-workspace"
+    set "$1" "/codex/.codex/default.code-workspace"
 fi
 
 # node /usr/lib/code-server

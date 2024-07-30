@@ -1,20 +1,20 @@
 {
         "folders": [
                 {
-                        "name": "CodeC",
-                        "path": "/codec/.codec"
+                        "name": "CodeX",
+                        "path": "/codex/.codex"
                 },
                 {
                         "name": "Mounts",
-                        "path": "/codec/mounts"
+                        "path": "/codex/mounts"
                 },
                 {
                         "name": "Archive",
-                        "path": "/codec/archive"
+                        "path": "/codex/archive"
                 },
                 {
                         "name": "Workspace",
-                        "path": "/codec/ws"
+                        "path": "/codex/ws"
                 }
         ],
         "settings": {}

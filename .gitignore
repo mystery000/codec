@@ -1,5 +1,5 @@
 .store
-codec-data
+codex-data
 
 node_modules
 !.keep

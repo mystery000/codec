@@ -2,11 +2,11 @@
 
 # if first argument is -rc or --restart, stop the main process
 if [[ "$1" == "-r" || "$1" == "--restart" || "$1" == "restart" ]]; then
-    echo "///CODEC///: Restarting codec container..."
+    echo "///CODEX///: Restarting codex container..."
 
     rm -rf /tmp/*
 
-    /etc/codec/mods.sh --quit
+    /etc/codex/mods.sh --quit
 
     rm -rf /tmp/*
 
@@ -18,96 +18,96 @@ if [[ "$1" == "-r" || "$1" == "--restart" || "$1" == "restart" ]]; then
 fi
 
 if [[ "$1" == "-l" || "$1" == "--logs" || "$1" == "logs" ]]; then
-    echo "///CODEC///: Logs:"
-    journalctl -u codec
+    echo "///CODEX///: Logs:"
+    journalctl -u codex
     exit 0
 fi
 
 
 # if first argument is -r or --fast-restart, restart the vscode process
 if [[ "$1" == "-fr" || "$1" == "--fast-restart" || "$1" == "fast-restart" ]]; then
-    echo "///CODEC///: Restarting codec vscode..."
+    echo "///CODEX///: Restarting codex vscode..."
     systemctl restart vscode
     exit 0
 fi
 
 # if first argument is -fd or --free-disk, free some disk space
 if [[ "$1" == "-fd" || "$1" == "--free-disk" || "$1" == "free-disk" ]]; then
-    echo "///CODEC///: Clear all codec logs..."
-    rm -rf /codec/.codec/logs/*
+    echo "///CODEX///: Clear all codex logs..."
+    rm -rf /codex/.codex/logs/*
 
-    echo "///CODEC///: Clear tmp folder..."
+    echo "///CODEX///: Clear tmp folder..."
     rm -rf /tmp/*
 
-    echo "///CODEC///: Clear codeserver cache files..."
-    rm -rf /codec/.codec/vscode/CachedExtensionVSIXs/*
-    rm -rf /codec/.codec/vscode/User/Backups/*
-    rm -rf /codec/.codec/vscode/User/workspaceStorage/*
-    rm -rf /codec/.codec/vscode/User/customBuiltinExtensionsCache.json
+    echo "///CODEX///: Clear codeserver cache files..."
+    rm -rf /codex/.codex/vscode/CachedExtensionVSIXs/*
+    rm -rf /codex/.codex/vscode/User/Backups/*
+    rm -rf /codex/.codex/vscode/User/workspaceStorage/*
+    rm -rf /codex/.codex/vscode/User/customBuiltinExtensionsCache.json
 
-    echo "///CODEC///: node_mods folder..."
-    find /codec/main -name "node_mods" -type d -prune -print | xargs du -chs
-    find /codec/old -name "node_mods" -type d -prune -print | xargs du -chs
-    find /codec/test -name "node_mods" -type d -prune -print | xargs du -chs
+    echo "///CODEX///: node_mods folder..."
+    find /codex/main -name "node_mods" -type d -prune -print | xargs du -chs
+    find /codex/old -name "node_mods" -type d -prune -print | xargs du -chs
+    find /codex/test -name "node_mods" -type d -prune -print | xargs du -chs
 
-    echo "///CODEC///: Wipe docker..."
-    codecdd start
-    codecdd swipe
-    codecdd stop
+    echo "///CODEX///: Wipe docker..."
+    codexdd start
+    codexdd swipe
+    codexdd stop
 
-    echo "///CODEC///: Clear apt cache files..."
+    echo "///CODEX///: Clear apt cache files..."
     aptup
     sudo apt-get autoremove -y
     sudo apt-get clean
     sudo apt-get autoclean
 
-    echo "///CODEC///: Wipe unused screens..."
+    echo "///CODEX///: Wipe unused screens..."
     screen -wipe > /dev/null 2>&1
 
-    echo "///CODEC///: Clear system logs..."
+    echo "///CODEX///: Clear system logs..."
     sudo journalctl --rotate > /dev/null 2>&1
     sudo journalctl --vacuum-time=3s
 
-    echo "///CODEC///: Finished!"
+    echo "///CODEX///: Finished!"
     exit 0
 fi
 
 # if first argument is -cc or --clear-cache, clear some cache
 if [[ "$1" == "-cc" || "$1" == "--clear-cache" || "$1" == "clear-cache" ]]; then
-    echo "///CODEC///: Clear all codec logs..."
-    rm -rf /codec/.codec/logs/*
+    echo "///CODEX///: Clear all codex logs..."
+    rm -rf /codex/.codex/logs/*
 
-    echo "///CODEC///: Clear tmp folder..."
+    echo "///CODEX///: Clear tmp folder..."
     rm -rf /tmp/*
 
-    echo "///CODEC///: Clear codeserver cache files..."
-    rm -rf /codec/.codec/vscode/CachedExtensionVSIXs/*
-    rm -rf /codec/.codec/vscode/User/Backups/*
-    rm -rf /codec/.codec/vscode/User/workspaceStorage/*
-    rm -rf /codec/.codec/vscode/User/customBuiltinExtensionsCache.json
+    echo "///CODEX///: Clear codeserver cache files..."
+    rm -rf /codex/.codex/vscode/CachedExtensionVSIXs/*
+    rm -rf /codex/.codex/vscode/User/Backups/*
+    rm -rf /codex/.codex/vscode/User/workspaceStorage/*
+    rm -rf /codex/.codex/vscode/User/customBuiltinExtensionsCache.json
 
-    echo "///CODEC///: Wipe docker..."
-    codecdd clean
+    echo "///CODEX///: Wipe docker..."
+    codexdd clean
 
-    echo "///CODEC///: Clear apt cache files..."
+    echo "///CODEX///: Clear apt cache files..."
     sudo apt-get autoremove -y
     sudo apt-get clean
     sudo apt-get autoclean
 
-    echo "///CODEC///: Wipe unused screens..."
+    echo "///CODEX///: Wipe unused screens..."
     screen -wipe > /dev/null 2>&1
 
-    echo "///CODEC///: Clear system logs..."
+    echo "///CODEX///: Clear system logs..."
     sudo journalctl --rotate > /dev/null 2>&1
     sudo journalctl --vacuum-time=3s
 
-    echo "///CODEC///: Finished!"
+    echo "///CODEX///: Finished!"
     exit 0
 fi
 
-ENABLED_MODS_PATH="/codec/.codec/enabled-mods"
-OPTIONAL_MODS_PATH="/codec/.codec/mods"
-LOGS_PATH="/etc/codec/logs"
+ENABLED_MODS_PATH="/codex/.codex/enabled-mods"
+OPTIONAL_MODS_PATH="/codex/.codex/mods"
+LOGS_PATH="/etc/codex/logs"
 
 if [[ "$1" == "-em" || "$1" == "--modon" || "$1" == "modon" ]]; then
     MOD_NAME=$2
@@ -115,7 +115,7 @@ if [[ "$1" == "-em" || "$1" == "--modon" || "$1" == "modon" ]]; then
         echo "You need to define a mod"
         exit 1
     fi
-    echo "///CODEC///: Enable mod '$MOD_NAME'..."
+    echo "///CODEX///: Enable mod '$MOD_NAME'..."
     rm -rf $ENABLED_MODS_PATH/$MOD_NAME.*.sh
     if [ -f $OPTIONAL_MODS_PATH/$MOD_NAME.env.sh ]; then
         ln -s \
@@ -138,8 +138,8 @@ if [[ "$1" == "-em" || "$1" == "--modon" || "$1" == "modon" ]]; then
             $ENABLED_MODS_PATH/$MOD_NAME.bash.sh
     fi
 
-    echo "Apply the changes on next codec restart!"
-    echo "Restart via: 'codec -r'"
+    echo "Apply the changes on next codex restart!"
+    echo "Restart via: 'codex -r'"
     exit 0
 fi
 
@@ -149,11 +149,11 @@ if [[ "$1" == "-dm" || "$1" == "--modoff" || "$1" == "modoff" ]]; then
         echo "You need to define a mod"
         exit 1
     fi
-    echo "///CODEC///: Disable mod '$MOD_NAME'..."
+    echo "///CODEX///: Disable mod '$MOD_NAME'..."
     rm -rf $ENABLED_MODS_PATH/$MOD_NAME.*.sh
 
-    echo "Apply the changes on next codec restart!"
-    echo "Restart via: 'codec -r'"
+    echo "Apply the changes on next codex restart!"
+    echo "Restart via: 'codex -r'"
     exit 0
 fi
 
@@ -167,14 +167,14 @@ if [[ "$1" == "-l" || "$1" == "--log" || "$1" == "log" ]]; then
     if [ -z "$3" ]; then
         LOGNAME="boot"
     fi
-    echo "///CODEC///: Logs of '/codec/.codec/logs/$LOGNAME_*.log' ..."
+    echo "///CODEX///: Logs of '/codex/.codex/logs/$LOGNAME_*.log' ..."
     if [[ "$LINES" == "all" ]]; then
-        tail /codec/.codec/logs/$LOGNAME_*.log | cat -n
+        tail /codex/.codex/logs/$LOGNAME_*.log | cat -n
     else
-        tail -n $LINES /codec/.codec/logs/$LOGNAME_*.log | cat -n
+        tail -n $LINES /codex/.codex/logs/$LOGNAME_*.log | cat -n
     fi
 
-    echo "///CODEC///: Finished!"
+    echo "///CODEX///: Finished!"
     exit 0
 fi
 
@@ -194,7 +194,7 @@ if [[ "$1" == "-w" || "$1" == "welcome" ]]; then
     echo "  ▒ ▒   ▒▒  ▒     ▒        ▓    ▒    ▒  ▒ ▒    ▒  ▒ ▒ "
     echo "  ▒      ▒        ▒        ▒    ▒       ▒         ▒   "
     echo "                  ▒        ▒   by Mohamed Hafeel      "
-    echo " Welcome to CodeC          ▒      & Computer.com      "
+    echo " Welcome to CodeX          ▒      & Computer.com      "
     echo "                                                      "
     exit 0
 fi
@@ -203,26 +203,26 @@ fi
 if [[ "$1" == "-rh" || "$1" == "---hash" || "$1" == "hash" ]]; then
     # print error if no second argument
     if [ -z "$2" ]; then
-        echo "///CODEC///: No hash as second argument!"
+        echo "///CODEX///: No hash as second argument!"
         exit 1
     fi
     # print error if hash is shorter than 32 characters
     if [ ${#2} -lt 32 ]; then
-        echo "///CODEC///: Hash is too short!"
+        echo "///CODEX///: Hash is too short!"
         exit 1
     fi
 
     HASH=$2
     HASH=${HASH:0:64}
 
-    printf "///CODEC///: Set new hash: \"%s\"\n" "$HASH"
+    printf "///CODEX///: Set new hash: \"%s\"\n" "$HASH"
 
-    sed -i '/^hashed-password:/d' /codec/.codec/vscode-server.yaml
-    echo -n "hashed-password: $HASH" >> /codec/.codec/vscode-server.yaml
+    sed -i '/^hashed-password:/d' /codex/.codex/vscode-server.yaml
+    echo -n "hashed-password: $HASH" >> /codex/.codex/vscode-server.yaml
 
-    echo "///CODEC///: Hash set!"
+    echo "///CODEX///: Hash set!"
 
-    echo "///CODEC///: Codec is restarting..."
+    echo "///CODEX///: Codex is restarting..."
     echo "Please reload the page!"
     systemctl restart vscode
     exit 0
@@ -239,14 +239,14 @@ if [[
 ]]; then
     PASSWORD=""
     while [ ${#PASSWORD} -lt 8 ]; do 
-        echo "///CODEC///: Enter a password with min 8 letters:"
+        echo "///CODEX///: Enter a password with min 8 letters:"
         read -s PASSWORD
 
-        echo -n "///CODEC///: Enter password again:"
+        echo -n "///CODEX///: Enter password again:"
         read -s RE_PASSWORD
         echo
         if [ "$PASSWORD" != "$RE_PASSWORD" ]; then
-            echo "///CODEC///: Passwords do not match! Try again!"
+            echo "///CODEX///: Passwords do not match! Try again!"
             echo "[CTRL] + [C] to abort"
             continue
         fi
@@ -266,18 +266,18 @@ if [[
 ]]; then
     # print error if no $PASSWORD
     if [ -z "$PASSWORD" ]; then
-        echo "///CODEC///: No password given!"
+        echo "///CODEX///: No password given!"
         exit 1
     fi
     # print error if password is shorter than 8 characters
     if [ ${#PASSWORD} -lt 8 ]; then
-        echo "///CODEC///: Password is too short!"
+        echo "///CODEX///: Password is too short!"
         exit 1
     fi
-    echo "///CODEC///: Set new password..."
-    codec -rh "$(sha256sum2 "$PASSWORD")"
+    echo "///CODEX///: Set new password..."
+    codex -rh "$(sha256sum2 "$PASSWORD")"
 
-    echo "///CODEC///: New password set!"
+    echo "///CODEX///: New password set!"
     exit 0
 fi
 
@@ -289,24 +289,24 @@ echo "A Ubuntu 22.04 based vscode server docker image"
 
 if [[ "$1" == "-h" || "$1" == "help" ]]; then
     echo ""
-    echo "Usage: 'codec [OPTION]'"
+    echo "Usage: 'codex [OPTION]'"
     echo "It is not possible to use multiple options."
     echo "Options:"
     echo "  -h,  help:         print this help and exit"
-    echo "  -l,  logs:         show codec service logs"
+    echo "  -l,  logs:         show codex service logs"
     echo "  -i,  interactive:  start interactive password prompt"
     echo "  -p,  pass <text>:  set password "
     echo "  -rh, hash <hash>:  saves a raw password hash"
     echo "  -w,  welcome:      print welcome message and exit"
     echo "  -fr, fast-restart: restart the vscode process"
-    echo "  -r,  restart:      restart the codec container"
+    echo "  -r,  restart:      restart the codex container"
     echo "  -fd, free-disk:    free some disk space"
-    echo "  -cc, clear-cache:  clear codec cache"
-    echo "  -em, modon <mod>:  Enable a codec mod"
-    echo "  -dm, modoff <mod>: Disable a codec mod"
+    echo "  -cc, clear-cache:  clear codex cache"
+    echo "  -em, modon <mod>:  Enable a codex mod"
+    echo "  -dm, modoff <mod>: Disable a codex mod"
     echo "  -l,  log <n> <ln>: print a logfile (example: boot, dockerd)"
 else
-    echo "Use 'codec -h' to get more informations about this command."
+    echo "Use 'codex -h' to get more informations about this command."
 fi
 
 echo ""

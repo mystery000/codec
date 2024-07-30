@@ -42,7 +42,7 @@
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.defaultProfile.osx": "bash",
     "terminal.integrated.defaultProfile.windows": "bash",
-    "terminal.integrated.cwd": "/codec/ws",
+    "terminal.integrated.cwd": "/codex/ws",
     "security.workspace.trust.enabled": false,
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.untrustedFiles": "open",
@@ -63,7 +63,7 @@
     "git.autoStash": true,
     "git.repositoryScanIgnoredFolders": [
         "node_modules",
-        ".codec",
+        ".codex",
         ".store",
         ".ignore",
         ".logs",

@@ -3,21 +3,21 @@
 source /etc/environment
 
 # clear cache files
-/etc/codec/cache.sh
+/etc/codex/cache.sh
 
 # health check
-/etc/codec/health.sh
+/etc/codex/health.sh
 
 # install tools
-/etc/codec/tools.sh
+/etc/codex/tools.sh
 
 apt-get update
 
 # default vscode extensions
-/etc/codec/extensions.sh
+/etc/codex/extensions.sh
 
 # init mod system
-/etc/codec/mods.sh
+/etc/codex/mods.sh
 
 # reload sysctl
 sysctl -p
@@ -27,6 +27,6 @@ echo "[CODEX][VSCODE]: Start vscode service..."
 systemctl start vscode
 
 # init async mods
-/etc/codec/mods_async.sh
+/etc/codex/mods_async.sh
 
 echo "[CODEX][VSCODE]: Done!"

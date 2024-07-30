@@ -8,7 +8,7 @@ sudo echo "[CODEX_CLI][UNINSTALL]: Super user access granted!"
 
 if [ "$1" != "-f" ] && [ "$1" != "--force" ]; then
     echo "[CODEX_CLI][UNINSTALL]: Uninstall codexcli?"
-    echo "If you want to uninstall codec enter 'y'."
+    echo "If you want to uninstall codex enter 'y'."
     read INPUT_VALUE
     if [ "$INPUT_VALUE" != "y" ]; then
         echo "Abort uninstall!"
@@ -17,6 +17,6 @@ if [ "$1" != "-f" ] && [ "$1" != "--force" ]; then
 fi
 
 echo "[CODEX_CLI][UNINSTALL]: Uninstall codexcli..."
-sudo rm -rf $CODEC_BIN_INSTALL_PATH/codexcli
+sudo rm -rf $CODEX_BIN_INSTALL_PATH/codexcli
 
 echo "[CODEX_CLI][UNINSTALL]: Done!"

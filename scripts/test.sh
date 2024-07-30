@@ -10,7 +10,7 @@ DOCKER_START_CMD=" \
     docker run -it \
         --name 'codexcli_test' \
         --net '$CODEX_NET' \
-        -e 'CODEC_PORTS=NONE-TEST-CONTAINER' \
+        -e 'CODEX_PORTS=NONE-TEST-CONTAINER' \
         codex \
         /bin/bash \
 "
@@ -32,6 +32,6 @@ echo "[CODEX_CLI][TEST]: Run docker container..."
 bash -c "$DOCKER_START_CMD"
 
 #echo "[CODEX_CLI][TEST]: Run docker daemon..."
-#$CURRENT_DIR/dockerd.sh $CODEC_USER
+#$CURRENT_DIR/dockerd.sh $CODEX_USER
 
 echo "[CODEX_CLI][TEST]: Finished!"

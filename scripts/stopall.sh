@@ -3,10 +3,10 @@
 export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
-echo "[CODEX_CLI][STOPALL]: Load codec container user list..."
+echo "[CODEX_CLI][STOPALL]: Load codex container user list..."
 USER_LIST=$(
     docker run -it --rm \
-        -v "$CODEC_USER_DATA:/app" \
+        -v "$CODEX_USER_DATA:/app" \
         -w /app \
         ubuntu:22.04 \
             ls -AQ
@@ -15,14 +15,14 @@ USER_LIST=$(
 USER_LIST=${USER_LIST::-1}
 USER_ARR=()
 for USER_FOLDER in ${USER_LIST[@]}; do
-    if [ $USER_FOLDER == '".codec"' ]; then
+    if [ $USER_FOLDER == '".codex"' ]; then
         continue
     fi
     USER_ARR+=($(echo -n "${USER_FOLDER:1:-1}"))
 done
 
 if ["${#USER_ARR[@]}" == "0"]; then
-    echo "[CODEX_CLI][UPDATEALL]: No codec user exists!"
+    echo "[CODEX_CLI][UPDATEALL]: No codex user exists!"
     exit 1
 fi
 
@@ -34,7 +34,7 @@ for USER_NAME in ${USER_ARR[@]}; do
     echo "# - '$USER_NAME'"
 done
 
-echo "# Enter 'y' to start the '$1' codec user container."
+echo "# Enter 'y' to start the '$1' codex user container."
 echo "# [CTRL] + [C] to abort!"
 read INPUT_VALUE
 if [ "$INPUT_VALUE" != "y" ]; then

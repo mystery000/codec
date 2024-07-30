@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][RANDOMPASSWORD]: No codec user defined!"
+    echo "[CODEX_CLI][RANDOMPASSWORD]: No codex user defined!"
     exit 1
 fi
 
@@ -14,4 +14,4 @@ HASH+="${HASH:9:2}${HASH:22:2}${HASH:23:1}${HASH:15:1}${HASH:3:1}"
 
 HASH="$(echo -n "$(date +'%N%S')$HASH$(date +'%S%N')" | sha256sum | cut -d' ' -f1)"
 
-echo -n "${HASH:16:5}_$1_${HASH:4:5}_CODEC_${HASH:24:5}"
+echo -n "${HASH:16:5}_$1_${HASH:4:5}_CODEX_${HASH:24:5}"

@@ -1,5 +1,5 @@
 - [About](#about)
-- [CodeC 2](#codec-2)
+- [CodeX 2](#codex-2)
   - [Apr 6, 2023](#apr-6-2023)
   - [Mar 23, 2023](#mar-23-2023)
   - [Mar 22, 2023](#mar-22-2023)
@@ -22,7 +22,7 @@
   - [Sep 4, 2022](#sep-4-2022)
   - [Sep 4, 2022](#sep-4-2022-1)
   - [Sep 2, 2022](#sep-2-2022)
-- [Codec](#codec)
+- [Codex](#codex)
   - [May 3, 2022](#may-3-2022)
   - [May 2, 2022](#may-2-2022)
   - [Apr 1, 2022](#apr-1-2022)
@@ -35,11 +35,11 @@
   - [Feb 14, 2022](#feb-14-2022)
 
 # About
-CodeC is a containerized web-browser code-server development environment.
+CodeX is a containerized web-browser code-server development environment.
 Code-Server is a vs-code abstraction build by Coder (GitHub: coder/code-server).
 
-# CodeC 2
-Changes of the version v2.0.0 (1. reversion) of CodeC.
+# CodeX 2
+Changes of the version v2.0.0 (1. reversion) of CodeX.
 First version with big breaking changes, new folder structure, build in systemd and other breaking features. 
 
 ## Apr 6, 2023
@@ -49,7 +49,7 @@ First version with big breaking changes, new folder structure, build in systemd 
 ## Mar 23, 2023
 - Update majo link on login screen
 ## Mar 22, 2023
-- Modify codec boot scripts and default mods
+- Modify codex boot scripts and default mods
 ## Mar 9, 2023
 - Update Code Server version
 
@@ -73,7 +73,7 @@ First version with big breaking changes, new folder structure, build in systemd 
 
 ## Dec 13, 2022
 - Fix stopall cmd
-- Change Codec net name
+- Change Codex net name
 
 ## Nov 18, 2022
 - Fix cron cmd and update all
@@ -119,24 +119,24 @@ First version with big breaking changes, new folder structure, build in systemd 
 
 ## Sep 2, 2022
 - Change: improve custom cmds
-- Change: improve codec cli tool
-- Implement codec v2
+- Change: improve codex cli tool
+- Implement codex v2
 
 
-# Codec
-Changes of the first development and release versions CodeC.
+# Codex
+Changes of the first development and release versions CodeX.
 
 ## May 3, 2022
 - Add: gundo and cd commands
-- Change: improve codec log command
-- Change: improve codec and allow cli scripts
+- Change: improve codex log command
+- Change: improve codex and allow cli scripts
 - Change: remove dockerfile layers
-- Fix: codec -fr command
+- Fix: codex -fr command
 
 ## May 2, 2022
-- Add: codecdd as codec docker deamon cli tool
+- Add: codexdd as codex docker deamon cli tool
 - Add: myip cli tool
-- Add: new codec cli tool
+- Add: new codex cli tool
 - Change: small changes
 
 ## Apr 1, 2022
@@ -157,8 +157,8 @@ Changes of the first development and release versions CodeC.
 - Fix: extensions don't install on boot
 
 ## Feb 22, 2022
-- Change: run extensions as codec
-- Change: update codec binary
+- Change: run extensions as codex
+- Change: update codex binary
 
 ## Feb 21, 2022
 - Change: update boot.sh
@@ -171,6 +171,6 @@ Changes of the first development and release versions CodeC.
 - Fix: keybindings
 - Fix: set version 3.12.0 for code-server
 - Fix: welcome message and missing files
-- Add: custom user script descriptions and new codec cmd
+- Add: custom user script descriptions and new codex cmd
 - Change: some changes
 

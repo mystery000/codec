@@ -4,35 +4,35 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][DOCKERD_STOP]: No codec user defined!"
+    echo "[CODEX_CLI][DOCKERD_STOP]: No codex user defined!"
     exit 1
 fi
 
-CODEC_USER=$1
-CODEC_DOCKERD_DIR="$CODEC_USER_DATA/.codec/dockerd/"
-CODEC_DOCKERD_CONFIG_PATH="$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd_config.json"
-CODEC_DOCKERD_PID_PATH="$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd.pid"
+CODEX_USER=$1
+CODEX_DOCKERD_DIR="$CODEX_USER_DATA/.codex/dockerd/"
+CODEX_DOCKERD_CONFIG_PATH="$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd_config.json"
+CODEX_DOCKERD_PID_PATH="$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd.pid"
 
-if [ ! -f "$CODEC_DOCKERD_PID_PATH" ]; then
-    echo "[CODEX_CLI][DOCKERD_STOP]: No $CODEC_USER dockerd started for $CODEC_USER!"
+if [ ! -f "$CODEX_DOCKERD_PID_PATH" ]; then
+    echo "[CODEX_CLI][DOCKERD_STOP]: No $CODEX_USER dockerd started for $CODEX_USER!"
     exit 0
 fi
 
-CODEC_DOCKERD_PID=$(<"$CODEC_DOCKERD_PID_PATH")
+CODEX_DOCKERD_PID=$(<"$CODEX_DOCKERD_PID_PATH")
 
-echo "[CODEX_CLI][DOCKERD_STOP]: Exit $CODEC_USER dockerd graceful..."
-kill -s SIGTERM $CODEC_DOCKERD_PID
+echo "[CODEX_CLI][DOCKERD_STOP]: Exit $CODEX_USER dockerd graceful..."
+kill -s SIGTERM $CODEX_DOCKERD_PID
 
 GRACEFUL_COUNTER=0
 
-while ps -p $CODEC_DOCKERD_PID > /dev/null; do
+while ps -p $CODEX_DOCKERD_PID > /dev/null; do
     if [ $GRACEFUL_COUNTER -ge 10 ]; then
         echo "[CODEX_CLI][DOCKERD_STOP]: No graceful exit!"
-        kill -s SIGKILL $CODEC_DOCKERD_PID
+        kill -s SIGKILL $CODEX_DOCKERD_PID
         break
     fi
     sleep 2
     GRACEFUL_COUNTER=$((GRACEFUL_COUNTER + 1))
 done
 
-echo "[CODEX_CLI][DOCKERD_STOP]: $CODEC_USER dockerd exit!"
+echo "[CODEX_CLI][DOCKERD_STOP]: $CODEX_USER dockerd exit!"

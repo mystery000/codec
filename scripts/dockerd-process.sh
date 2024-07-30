@@ -4,28 +4,28 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][DOCKERD_PROCESS]: No codec user defined!"
+    echo "[CODEX_CLI][DOCKERD_PROCESS]: No codex user defined!"
     exit 1
 fi
 
 echo "[CODEX_CLI][DOCKERD_PROCESS]: Start docker daemon..."
 
-CODEC_USER=$1
-CODEC_DOCKERD_DIR="$CODEC_USER_DATA/.codec/dockerd/"
-CODEC_DOCKERD_CONFIG_PATH="$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd_config.json"
+CODEX_USER=$1
+CODEX_DOCKERD_DIR="$CODEX_USER_DATA/.codex/dockerd/"
+CODEX_DOCKERD_CONFIG_PATH="$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd_config.json"
 
 dockerd \
-    --config-file "$CODEC_DOCKERD_CONFIG_PATH" > \
-    "$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd.logs" \
+    --config-file "$CODEX_DOCKERD_CONFIG_PATH" > \
+    "$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd.logs" \
     2>&1 &
     
-CODEC_DOCKERD_PID=$!
+CODEX_DOCKERD_PID=$!
 
-while docker ps -q --filter name=codec_$CODEC_USER &> /dev/null; do
+while docker ps -q --filter name=codex_$CODEX_USER &> /dev/null; do
     sleep 30
 done
 
-$CURRENT_DIR/dockerd-stop.sh $CODEC_USER
-kill -s SIGKILL $CODEC_DOCKERD_PID
+$CURRENT_DIR/dockerd-stop.sh $CODEX_USER
+kill -s SIGKILL $CODEX_DOCKERD_PID
 
 echo "[CODEX_CLI][DOCKERD_PROCESS]: dockerd exit!"

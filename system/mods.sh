@@ -2,9 +2,9 @@
 
 echo "[CODEX][MOD]: Load mods..."
 
-ENABLED_MODS_PATH="/codec/.codec/enabled-mods"
-OPTIONAL_MODS_PATH="/codec/.codec/mods"
-LOGS_PATH="/etc/codec/logs"
+ENABLED_MODS_PATH="/codex/.codex/enabled-mods"
+OPTIONAL_MODS_PATH="/codex/.codex/mods"
+LOGS_PATH="/etc/codex/logs"
 
 mkdir -p $ENABLED_MODS_PATH
 mkdir -p $OPTIONAL_MODS_PATH
@@ -56,9 +56,9 @@ fi
 
 echo "[CODEX][MOD]: $MOD_COUNTER mods found!"
 
-export CODEC_ALL_APT_PACKAGES=""
-export CODEC_ALL_NPM_PACKAGES=""
-source /codec/.codec/env.sh > $LOGS_PATH/user.env.log
+export CODEX_ALL_APT_PACKAGES=""
+export CODEX_ALL_NPM_PACKAGES=""
+source /codex/.codex/env.sh > $LOGS_PATH/user.env.log
 
 for ENV_MOD_PATH in $ENV_MOD_PATHS; do
     ENV_MOD_NAME=$(basename "$ENV_MOD_PATH")
@@ -67,39 +67,39 @@ for ENV_MOD_PATH in $ENV_MOD_PATHS; do
     touch $ENV_MOD_LOGS_PATH
     source $ENV_MOD_PATH > $ENV_MOD_LOGS_PATH
     echo "[CODEX][MOD][ENV]: '$ENV_MOD_NAME' loaded!"
-    if [ "$CODEC_APT_PACKAGES" != "" ]; then
-        if [ "$CODEC_ALL_APT_PACKAGES" != "" ]; then
-            export CODEC_ALL_APT_PACKAGES="$CODEC_ALL_APT_PACKAGES $CODEC_APT_PACKAGES"
+    if [ "$CODEX_APT_PACKAGES" != "" ]; then
+        if [ "$CODEX_ALL_APT_PACKAGES" != "" ]; then
+            export CODEX_ALL_APT_PACKAGES="$CODEX_ALL_APT_PACKAGES $CODEX_APT_PACKAGES"
         else
-            export CODEC_ALL_APT_PACKAGES="$CODEC_APT_PACKAGES"
+            export CODEX_ALL_APT_PACKAGES="$CODEX_APT_PACKAGES"
         fi
         
-        export CODEC_APT_PACKAGES=""
+        export CODEX_APT_PACKAGES=""
     fi
-    if [ "$CODEC_NPM_PACKAGES" != "" ]; then
-        if [ "$CODEC_ALL_NPM_PACKAGES" != "" ]; then
-            export CODEC_ALL_NPM_PACKAGES="$CODEC_ALL_NPM_PACKAGES $CODEC_NPM_PACKAGES"
+    if [ "$CODEX_NPM_PACKAGES" != "" ]; then
+        if [ "$CODEX_ALL_NPM_PACKAGES" != "" ]; then
+            export CODEX_ALL_NPM_PACKAGES="$CODEX_ALL_NPM_PACKAGES $CODEX_NPM_PACKAGES"
         else
-            export CODEC_ALL_NPM_PACKAGES="$CODEC_NPM_PACKAGES"
+            export CODEX_ALL_NPM_PACKAGES="$CODEX_NPM_PACKAGES"
         fi
         
-        export CODEC_NPM_PACKAGES=""
+        export CODEX_NPM_PACKAGES=""
     fi
 done
 
 apt-get update
-if [ "$CODEC_ALL_APT_PACKAGES" != "" ]; then
+if [ "$CODEX_ALL_APT_PACKAGES" != "" ]; then
     echo "[CODEX][MOD][APT]: Install following packages:"
-    echo "'$CODEC_ALL_APT_PACKAGES'"
-    apt-get install -y --no-install-recommends $CODEC_ALL_APT_PACKAGES
+    echo "'$CODEX_ALL_APT_PACKAGES'"
+    apt-get install -y --no-install-recommends $CODEX_ALL_APT_PACKAGES
 else 
     echo "[CODEX][MOD][APT]: No apt packages defined!"
 fi
 
-if [ "$CODEC_ALL_NPM_PACKAGES" != "" ]; then
+if [ "$CODEX_ALL_NPM_PACKAGES" != "" ]; then
     echo "[CODEX][MOD][NPM]: Install following packages:"
-    echo "'$CODEC_ALL_NPM_PACKAGES'"
-    npm i -g $CODEC_ALL_NPM_PACKAGES
+    echo "'$CODEX_ALL_NPM_PACKAGES'"
+    npm i -g $CODEX_ALL_NPM_PACKAGES
 else 
     echo "[CODEX][MOD][NPM]: No npm packages defined!"
 fi

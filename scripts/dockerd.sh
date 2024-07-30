@@ -4,27 +4,27 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][DOCKERD]: No codec user defined!"
+    echo "[CODEX_CLI][DOCKERD]: No codex user defined!"
     exit 1
 fi
 
-echo "[CODEX_CLI][DOCKERD]: Prepare $CODEC_USER docker daemon process..."
+echo "[CODEX_CLI][DOCKERD]: Prepare $CODEX_USER docker daemon process..."
 
-CODEC_USER=$1
-CODEC_DOCKERD_DIR="$CODEC_USER_DATA/.codec/dockerd/"
-CODEC_DOCKERD_CONFIG_PATH="$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd_config.json"
-CODEC_DOCKERD_PID_PATH="$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd.pid"
+CODEX_USER=$1
+CODEX_DOCKERD_DIR="$CODEX_USER_DATA/.codex/dockerd/"
+CODEX_DOCKERD_CONFIG_PATH="$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd_config.json"
+CODEX_DOCKERD_PID_PATH="$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd.pid"
 
-mkdir -p $CODEC_DOCKERD_DIR
-mkdir -p $CODEC_USER_DATA/$CODEC_USER/dockerd/
+mkdir -p $CODEX_DOCKERD_DIR
+mkdir -p $CODEX_USER_DATA/$CODEX_USER/dockerd/
 
-$CURRENT_DIR/dockerd-stop.sh $CODEC_USER
+$CURRENT_DIR/dockerd-stop.sh $CODEX_USER
 
-cat <<EOF > $CODEC_DOCKERD_CONFIG_PATH
+cat <<EOF > $CODEX_DOCKERD_CONFIG_PATH
 {
-  "hosts": ["unix://$CODEC_USER_DATA/$CODEC_USER/dockerd/dockerd.sock"],
-  "pidfile": "$CODEC_DOCKERD_DIR/$CODEC_USER_dockerd.pid",
-  "data-root": "$CODEC_USER_DATA/$CODEC_USER/dockerd/data",
+  "hosts": ["unix://$CODEX_USER_DATA/$CODEX_USER/dockerd/dockerd.sock"],
+  "pidfile": "$CODEX_DOCKERD_DIR/$CODEX_USER_dockerd.pid",
+  "data-root": "$CODEX_USER_DATA/$CODEX_USER/dockerd/data",
   "registry-mirrors": [
     "https://docker-reg.coreunit.net"
   ],
@@ -37,5 +37,5 @@ cat <<EOF > $CODEC_DOCKERD_CONFIG_PATH
 }
 EOF
 
-echo "[CODEX_CLI][DOCKERD]: Run $CODEC_USER docker daemon process..."
-$CURRENT_DIR/dockerd-process.sh $CODEC_USER > "$CODEC_DOCKERD_DIR/$CODEC_USER_docker_sidecar.logs" &
+echo "[CODEX_CLI][DOCKERD]: Run $CODEX_USER docker daemon process..."
+$CURRENT_DIR/dockerd-process.sh $CODEX_USER > "$CODEX_DOCKERD_DIR/$CODEX_USER_docker_sidecar.logs" &

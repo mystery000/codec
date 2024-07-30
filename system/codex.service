@@ -1,0 +1,10 @@
+[Unit]
+Description=Codex Service
+
+[Service]
+Type=simple
+PIDFile=/etc/codex/codex.pid
+ExecStart=/bin/bash -c /etc/codex/boot.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -37,7 +37,7 @@
         {{ERROR}}
       </div>
 
-      <form method="post" id="codec-from">
+      <form method="post" id="codex-from">
         <div class="user-box">
           <input class="user" type="text" autocomplete="username" />
           <input id="base" type="hidden" name="base" value="{{BASE}}" />
@@ -47,7 +47,7 @@
             onkeydown="passKey(event)" />
           <label>Password</label>
         </div>
-        <a id="submit-button" href="#" onclick="document.getElementById('codec-from').submit()">
+        <a id="submit-button" href="#" onclick="document.getElementById('codex-from').submit()">
           <span></span>
           <span></span>
           <span></span>
@@ -110,7 +110,7 @@
       if (running || event.keyCode !== 13) {
         return
       }
-      const form = document.getElementById('codec-from')
+      const form = document.getElementById('codex-from')
       const submit = document.getElementById('submit-button')
       running = true
       form.disabled = true

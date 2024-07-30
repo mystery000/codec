@@ -2,76 +2,76 @@
 
 echo "[CODEX][HEALTH]: Create folder..."
 
-mkdir -p /codec/.codec/mods
-mkdir -p /codec/.codec/enabled-mods
+mkdir -p /codex/.codex/mods
+mkdir -p /codex/.codex/enabled-mods
 
-# codec module migration
-if [ -d "/codec/.codec/optional" ]
+# codex module migration
+if [ -d "/codex/.codex/optional" ]
 then
-    cp /codec/.codec/optional/* /codec/.codec/mods
+    cp /codex/.codex/optional/* /codex/.codex/mods
 fi
-rm -rf /codec/.codec/modules
-rm -rf /codec/.codec/optional
+rm -rf /codex/.codex/modules
+rm -rf /codex/.codex/optional
 
-mkdir -p /codec/mounts
-mkdir -p /codec/archive
-mkdir -p /codec/ws
+mkdir -p /codex/mounts
+mkdir -p /codex/archive
+mkdir -p /codex/ws
 
-echo "[CODEX][HEALTH]: Copy codec skel..."
-cp -nr /etc/codec/skel/* /codec/.codec/
+echo "[CODEX][HEALTH]: Copy codex skel..."
+cp -nr /etc/codex/skel/* /codex/.codex/
 
 echo "[CODEX][HEALTH]: Mounting..."
-/etc/codec/mounts.js
+/etc/codex/mounts.js
 
 echo "[CODEX][HEALTH]: Linking 'config.yaml'..."
 mkdir -p /root/.config/code-server
 rm -rf /root/.config/code-server/config.yaml
-cp -n /etc/codec/vscode-server.yaml /codec/.codec/vscode-server.yaml
-ln -s /codec/.codec/vscode-server.yaml /root/.config/code-server/config.yaml 
+cp -n /etc/codex/vscode-server.yaml /codex/.codex/vscode-server.yaml
+ln -s /codex/.codex/vscode-server.yaml /root/.config/code-server/config.yaml 
 echo "Linked: '/root/.config/code-server/config.yaml'"
 
 echo "[CODEX][HEALTH]: Linking 'keybindings.json'..."
 mkdir -p /root/.local/share/code-server/User
-rm -rf /codec/mounts/vscode/User/keybindings.json
-ln -s /codec/.codec/keybindings.json /root/.local/share/code-server/User/keybindings.json
+rm -rf /codex/mounts/vscode/User/keybindings.json
+ln -s /codex/.codex/keybindings.json /root/.local/share/code-server/User/keybindings.json
 echo "Linked: '/root/.local/share/code-server/User/keybindings.json'"
 
 echo "[CODEX][HEALTH]: Linking 'vscode/User/settings.json'..."
 mkdir -p /root/.local/share/code-server/User
-rm -rf /codec/mounts/vscode/User/settings.json
-ln -s /codec/.codec/settings.json /root/.local/share/code-server/User/settings.json
+rm -rf /codex/mounts/vscode/User/settings.json
+ln -s /codex/.codex/settings.json /root/.local/share/code-server/User/settings.json
 echo "Linked: '/root/.local/share/code-server/User/settings.json'"
 
 # echo "[CODEX][HEALTH]: Linking 'product.json'..."
 # mkdir -p /usr/lib/code-server/lib/vscode
-# cp -n /usr/lib/code-server/lib/vscode/product.json /codec/.codec/product.json
+# cp -n /usr/lib/code-server/lib/vscode/product.json /codex/.codex/product.json
 # rm -rf /usr/lib/code-server/lib/vscode/product.json
-# ln -s /codec/.codec/product.json /usr/lib/code-server/lib/vscode/product.json
+# ln -s /codex/.codex/product.json /usr/lib/code-server/lib/vscode/product.json
 # echo "Linked: '/usr/lib/code-server/lib/vscode/product.json'"
 
 echo "[CODEX][HEALTH]: Linking..."
 rm -rf /usr/lib/code-server/src/browser/pages
-ln -s /etc/codec/login /usr/lib/code-server/src/browser/pages
+ln -s /etc/codex/login /usr/lib/code-server/src/browser/pages
 echo "Linked: '/usr/lib/code-server/src/browser'"
 
-/etc/codec/readme.sh
-/etc/codec/changelogs.sh
+/etc/codex/readme.sh
+/etc/codex/changelogs.sh
 
 echo "[CODEX][HEALTH]: Linking home 'ws' dir..."
 rm -rf /root/ws
-ln -s /codec/ws /root/ws
-echo "Link in `/codec/ws` to '/root/ws' created!"
+ln -s /codex/ws /root/ws
+echo "Link in `/codex/ws` to '/root/ws' created!"
 
 echo "[CODEX][HEALTH]: Linking home 'workspace' dir..."
 rm -rf /root/workspace
-ln -s /codec/ws /root/workspace
-echo "Link in `/root/workspace` to '/codec/ws' created!"
+ln -s /codex/ws /root/workspace
+echo "Link in `/root/workspace` to '/codex/ws' created!"
 
-echo "[CODEX][HEALTH]: Linking home 'codec' dir..."
-rm -rf /root/codec
-ln -s /codec /root/codec
-echo "Link in `/root/codec` to '/codec' created!"
+echo "[CODEX][HEALTH]: Linking home 'codex' dir..."
+rm -rf /root/codex
+ln -s /codex /root/codex
+echo "Link in `/root/codex` to '/codex' created!"
 
 echo "[CODEX][HEALTH]: Disable vscode telemetry..."
-/etc/codec/vscode_telemetry.js
+/etc/codex/vscode_telemetry.js
 echo "[CODEX][HEALTH]: Telemetry disabled!"

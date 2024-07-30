@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 echo "[CODEX][README]: Init..."
-touch /codec/.codec/readme.md
+touch /codex/.codex/readme.md
 
-if [ -f "/codec/.codec/readme.md" ]; then
-  if [ "$(cat /etc/codec/readme.md)" == "$(cat /codec/.codec/readme.md)" ]; then
+if [ -f "/codex/.codex/readme.md" ]; then
+  if [ "$(cat /etc/codex/readme.md)" == "$(cat /codex/.codex/readme.md)" ]; then
     echo "[CODEX][README]: No changes."
     exit 0
   fi
 fi
 
-rm -rf /codec/.codec/readme.md
-cp /etc/codec/readme.md /codec/.codec/readme.md
-cp /etc/codec/readme.md /codec/workspace/CODEC_README.md
+rm -rf /codex/.codex/readme.md
+cp /etc/codex/readme.md /codex/.codex/readme.md
+cp /etc/codex/readme.md /codex/workspace/CODEX_README.md

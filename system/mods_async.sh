@@ -2,9 +2,9 @@
 
 echo "[CODEX][MOD]: Load mods..."
 
-ENABLED_MODS_PATH="/codec/.codec/enabled-mods"
-OPTIONAL_MODS_PATH="/codec/.codec/mods"
-LOGS_PATH="/etc/codec/logs"
+ENABLED_MODS_PATH="/codex/.codex/enabled-mods"
+OPTIONAL_MODS_PATH="/codex/.codex/mods"
+LOGS_PATH="/etc/codex/logs"
 
 ASYNC_MOD_PATHS=("$(find $ENABLED_MODS_PATH -name "*.async.sh")")
 

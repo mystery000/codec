@@ -6,7 +6,7 @@ source $CURRENT_DIR/vars.sh
 echo "Need root access..."
 sudo echo "Root access granted!"
 
-sudo crontab -l > /tmp/codec-cron
-sed '/.codec/d' /tmp/codec-cron > /tmp/codec-cron
-sudo crontab /tmp/codec-cron
-sudo rm -rf /tmp/codec-cron
+sudo crontab -l > /tmp/codex-cron
+sed '/.codex/d' /tmp/codex-cron > /tmp/codex-cron
+sudo crontab /tmp/codex-cron
+sudo rm -rf /tmp/codex-cron

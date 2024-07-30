@@ -2,12 +2,12 @@
 
 const fs = require("fs").promises
 const path = require("path")
-const mounts = require("/codec/.codec/mounts.json")
+const mounts = require("/codex/.codex/mounts.json")
 
 const mounts2 = {}
 let targets = Object.keys(mounts).map(
     (key) => {
-        const target = path.normalize("/codec/mounts/" + key)
+        const target = path.normalize("/codex/mounts/" + key)
         mounts2[target] = mounts[key]
         return target
     }
@@ -33,7 +33,7 @@ async function createTargetLink(
     console.info("### Create link for '" + target + "'")
     let link = mounts2[target]
     if (!link.startsWith("/")) {
-        link = "/codec/mounts/" + link
+        link = "/codex/mounts/" + link
     }
     link = path.normalize(link)
     console.info("### Create link and target parent dirs if not exist!")
@@ -51,7 +51,7 @@ async function createTargetLink(
             }
         )
     ])
-    await codecLink(
+    await codexLink(
         link,
         target
     )
@@ -63,7 +63,7 @@ async function createTargetLink(
     }
 }
 
-async function codecLink(
+async function codexLink(
     link,
     target
 ) {

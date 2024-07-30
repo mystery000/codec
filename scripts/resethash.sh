@@ -4,7 +4,7 @@ export CURRENT_DIR=$(dirname $(realpath $0))
 source $CURRENT_DIR/vars.sh
 
 if [ -z "$1" ]; then
-    echo "[CODEX_CLI][RESETHASH]: No codec user defined!"
+    echo "[CODEX_CLI][RESETHASH]: No codex user defined!"
     exit 1
 fi
 
@@ -17,7 +17,7 @@ docker rm -f codexcli-reset-hash-helper > /dev/null 2>&1
 DEFAULT_PASS="$(
     docker run -it --rm \
         --name "codexcli-reset-hash-helper" \
-        -v "$CODEC_USER_DATA/.codec:/app" \
+        -v "$CODEX_USER_DATA/.codex:/app" \
         ubuntu:22.04 \
             bash -c \
             "cat /app/hash/$1.hash"
