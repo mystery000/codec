@@ -1,4 +1,4 @@
-# table of contents
+<!-- # table of contents
 - [codex](#codex)
 - [table of contents](#table-of-contents)
 - [about](#about)
@@ -40,7 +40,7 @@
   - [v1 folder structure](#v1-folder-structure)
   - [v1 Problems](#v1-problems)
   - [v2.0.0 changes](#v200-changes)
-- [contribution](#contribution)
+- [contribution](#contribution) -->
 
 # about
 CodeX is a containerized web-based Multi-User VS-Code like development environment based on coder/code-server, Docker, Ubuntu and a lot of CLI, Control and Setup Bash Scripts.
@@ -71,7 +71,7 @@ Please note that the CodeX is under development, may have some security issues a
 
 ## Requirements
 
-![One does not simply do that job](./docs/img/one-does-not-simply.png)
+<!-- ![One does not simply do that job](./docs/img/one-does-not-simply.png) -->
 
 | Required  | Explanation                                                                                                 |
 | --------- | ----------------------------------------------------------------------------------------------------------- |
@@ -140,7 +140,7 @@ Some examples:
 ## Startup
 Now you are ready to start a CodeX container!
 
-![CodeX works](./docs/img/Success-Kid.png)
+<!-- ![CodeX works](./docs/img/Success-Kid.png) -->
 
 Here is a explaination how to use the `codexcli start` to start a CodeX user container:
 [codexcli start](#start)
@@ -155,7 +155,7 @@ The CodeX CLI, also known as `codexcli`, is a provider CLI that allows a CodeX p
 
 ### start
 
-![One does not simply do that job](./docs/img/cat1.png)
+<!-- ![One does not simply do that job](./docs/img/cat1.png) -->
 
 To start or restart a CodeX user container, use the following command:
 
@@ -175,7 +175,7 @@ After the start the container opens the code-server on port 8080.
 You can access the code-server just with a configured proxy server.
 
 Login using the given password of the `codexcli` command or change it:
-![Login Hover](./docs/img/login-hover.png)
+<!-- ![Login Hover](./docs/img/login-hover.png) -->
 
 ### pass
 Change the password of an existing users:
@@ -224,7 +224,7 @@ Delete all peristend CodeX user files and configurations:
 codexcli delete <NAME>
 ```
 
-## Proxy
+<!-- ## Proxy
 As CodeX Proxy you can use any proxy that can proxy the requests to the user container the right way.
 
 ![One does not simply do that job](./docs/img/what-if-i-told.png)
@@ -237,7 +237,7 @@ For example, if the CodeX is running under the wildcard subdomain `*.codex.examp
 The proxy server determines which container to proxy the incoming HTTP requests to based on the host.
 For that, the proxy server needs to be in the same docker network as the CodeX container instances.
 
-A proxy server is necessary to publish all CodeX containers http web server ports via the same tcp port (80/443).
+A proxy server is necessary to publish all CodeX containers http web server ports via the same tcp port (80/443). -->
 
 ## Image
 In the context of CodeX, the image refers to the Docker image from which all CodeX user containers are started.   The image is based on one of the newest Ubuntu versions (often LTS) and includes various development tools like: `NPM`, `Node.js`, `Git`, the `code-server` (vs-code web abstraction built by [Coder](https://github.com/coder/code-server)). 
@@ -286,7 +286,7 @@ codex -i
 ```
 codex -h
 ```
-
+<!-- 
 #### mod cli
 Enable CodeX Mods:
 ```
@@ -301,7 +301,7 @@ After the state of a Mod has changed you can perform a container restart to make
 By disabling a Mod, the apt/npm/package-manager dependencies, configurations and changes will not immediately take effect.
 
 ![One does not simply do that job](./docs/img/cat2.png)
-Also take a look how to code [own Mods](#custom-mod).
+Also take a look how to code [own Mods](#custom-mod). -->
 
 #### clear cache
 Clears some cache files in the codex instance:
@@ -315,7 +315,7 @@ Frees up some disk space in emergency situations if the disk runs out of space:
 codex -fd
 ```
 
-## Mods
+<!-- ## Mods
 CodeX provides users with the ability to customize their experience with the use of `Mods`.  
 Mods are custom Bash scripts that can be created and `adjusted by users` to alter their CodeX experience.  
 Mods can be used to make changes that range from minor modifications to full-scale adjustments. 
@@ -430,7 +430,7 @@ Here is some examples that explain how the script types are used in different mo
 - ##### Mod: `docker`
   Allows the user to use docker (for the provider: docker in docker) in their own CodeX instance.
   For this you need to have a [privileged](#start) CodeX docker container running.
-  - `Async`: Enables all pre installed docker processes.
+  - `Async`: Enables all pre installed docker processes. -->
 
 ## Mounts
 `!!! This section not describes Docker volumes mounts !!!`  
@@ -507,11 +507,11 @@ We recommend to use [Mods](#mods) (or [Mounts](#mounts)) for dev env customizati
 | `/etc/codex/health.sh` | Bash script to check and repair desired CodeX state of folder and file structures                                   |
 | `/etc/codex/skel/`     | Skeleton directory used for the [user's CodeX folder](#user-fs) `/codex/.codex` below                               |
 
-# Preview
+<!-- # Preview
 ![AssemblyScript](./docs/img/codex-wasm-preview.png)
 ![Images](./docs/img/codex-image-preview.png)
 ![Makrdown](./docs/img/codex-markdown-preview.png)
-![Login](./docs/img/login.png)
+![Login](./docs/img/login.png) -->
 
 # Codex v1
 'Codex' v1 was successful, but not very well thought-out software.  
