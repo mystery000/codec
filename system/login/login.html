@@ -1,135 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-  <meta http-equiv="Content-Security-Policy"
-    content="style-src 'self'; script-src 'self' 'unsafe-inline'; manifest-src 'self'; img-src 'self' data:; font-src 'self' data:;" />
-  <title>Login |CodeX</title>
-  <link rel="icon" href="{{CS_STATIC_BASE}}/src/browser/media/favicon-dark-support.svg" />
-  <link rel="alternate icon" href="{{CS_STATIC_BASE}}/src/browser/media/favicon.ico" />
-  <link rel="manifest" href="{{BASE}}/manifest.json" crossorigin="use-credentials" />
-  <link rel="apple-touch-icon" sizes="192x192" href="{{CS_STATIC_BASE}}/src/browser/media/pwa-icon-192.png" />
-  <link rel="apple-touch-icon" sizes="512x512" href="{{CS_STATIC_BASE}}/src/browser/media/pwa-icon-512.png" />
-  <link href="{{CS_STATIC_BASE}}/src/browser/pages/global.css" rel="stylesheet" />
-  <link href="{{CS_STATIC_BASE}}/src/browser/pages/login.css" rel="stylesheet" />
-  <meta id="coder-options" data-settings="{{OPTIONS}}" />
-</head>
-
-<body>
-  <div class="wrapper">
-    <div class="login-box">
-      <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1020" width="100%">
-        <path fill="#a72a2aed"
-          d="m1282.3 565v132.3l8.4 9.3-8.4 8.2v-1.2l-291.1 290.2 13.1-67.9v-816.6l-18.7-29.2h233l63.7 47.9v118.2h-112.3v-28.1h-62.7v448.1l62.7-57.3v-53.9zm73-474.9h202.1l42.1 52.6v534.7l-154.4 141.5-130.1-129.8v-542.9zm130.1 139.2h-62.7v365.1l62.7 66.6zm132.9-139.2h243.3l42.1 52.7v417.6l-284.5 245.7zm171.3 139.2h-62.7v330l62.7-50.3zm302.3 257.4h-60.9v107.6l62.7 66.7v-129.9h114.2v146.3l-154.4 141.5-130.1-129.8v-542.9l40.3-56.2h202.1l42.1 52.7v163.8h-114.2v-77.2h-62.7v114.6h60.9zm414.6 78.4v132.2l8.4 9.4-8.4 8.2v-1.2l-291.1 290.1 13.1-67.8v-816.6l-18.7-29.3h233l63.7 48v118.1h-112.3v-28h-62.8v448l62.8-57.3v-53.8z" />
-        <path fill="#ff641c"
-          d="m965 454v103.7h-20.3c-69.6 0-69.6 13-69.6 61.1v227.8c0 115.5-60.4 162.6-208.5 162.6h-354.1c-148.2 0-208.6-47.1-208.6-162.6v-227.8c0-48.1 0-61.1-69.6-61.1h-20.3v-103.7h20.3c64.7 0 68.5-6.8 68.5-59.9v-220.5c0-116.2 60.8-163.6 209.7-163.6h20.3v111.2h-20.3c-67.5 0-70.7 12.1-70.7 50.3v206.5c0 60-15.2 102.7-46.3 129.3 39.4 33 45.2 83.6 45.2 126.4v215.1c0 36.6 3.5 49.2 71.8 49.2h354.1c68.2 0 71.7-12.6 71.7-49.2v-215.1c0-42.8 5.8-93.4 45.2-126.4-31-26.6-46.3-69.3-46.3-129.3v-206.5c0-38.2-3.2-50.3-70.6-50.3h-20.3v-111.2h20.3c148.9 0 209.6 47.4 209.6 163.6v220.5c0 53.1 3.8 59.9 68.5 59.9z" />
-      </svg>
-
-      <div class="header">
-        <h3 class="main withUsername">Welcome <b>{{USERNAME}}</b></h3>
-        <div class="sub">Please enter your developer password:</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="style-src 'self'; script-src 'self' 'unsafe-inline'; manifest-src 'self'; img-src 'self' data:; font-src 'self' data:;"
+    />
+    <title>Login |CodeX</title>
+    <link rel="icon" href="{{CS_STATIC_BASE}}/src/browser/pages/image.png" />
+    <link
+      rel="alternate icon"
+      href="{{CS_STATIC_BASE}}/src/browser/pages/image.png"
+    />
+    <link
+      rel="manifest"
+      href="{{BASE}}/manifest.json"
+      crossorigin="use-credentials"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="{{CS_STATIC_BASE}}/src/browser/media/pwa-icon-192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="{{CS_STATIC_BASE}}/src/browser/media/pwa-icon-512.png"
+    />
+    <link
+      href="{{CS_STATIC_BASE}}/src/browser/pages/login.css"
+      rel="stylesheet"
+    />
+    <meta id="coder-options" data-settings="{{OPTIONS}}" />
+  </head>
+  <body>
+    <div class="container container-md">
+      <div class="text-container">
+        <h2 class="withUsername">Welcome, <b>{{USERNAME}}</b></h2>
+        <p>
+          Stay in flow with the only self-hosted, open source cloud development
+          environment that works with any cloud, IDE, OS, Git provider, and IDP.
+        </p>
       </div>
 
-      <div class="error-box">
-        {{ERROR}}
-      </div>
-
-      <form method="post" id="codex-from">
-        <div class="user-box">
-          <input class="user" type="text" autocomplete="username" />
-          <input id="base" type="hidden" name="base" value="{{BASE}}" />
-          <input id="href" type="hidden" name="href" value="" />
-
-          <input required autofocus class="password" type="password" name="password" autocomplete="current-password"
-            onkeydown="passKey(event)" />
-          <label>Password</label>
+      <form class="form" method="post" id="codex-from" autocomplete="off">
+        <h3>Sign in</h3>
+        <div>
+          <input
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            placeholder="Password"
+            onkeydown="passKey(event)"
+          />
         </div>
-        <a id="submit-button" href="#" onclick="document.getElementById('codex-from').submit()">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Let's code!
-        </a>
+        <div class="error-box">{{ERROR}}</div>
+        <div>
+          <button
+            type="button"
+            id="submit-button"
+            onclick="document.getElementById('codex-from').submit()"
+          >
+            Get Started
+          </button>
+        </div>
       </form>
     </div>
+    <script>
+      const mouseevent = {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      };
 
-  </div>
-  <script>
-    const mouseevent = {
-      'view': window,
-      'bubbles': true,
-      'cancelable': true,
-    }
+      function hoverOver(element) {
+        typeof element.onmouseover == "function" && element.onmouseover();
+        typeof element.mouseover == "function" && element.mouseover();
+        typeof element.focus == "function" && element.focus();
 
-    function hoverOver(element) {
-      typeof element.onmouseover == "function" && element.onmouseover()
-      typeof element.mouseover == "function" && element.mouseover()
-      typeof element.focus == "function" && element.focus()
-
-      element.dispatchEvent(new MouseEvent('mouseover', mouseevent))
-    }
-
-    function hoverLeave(element) {
-      element.dispatchEvent(new MouseEvent('mouseout', mouseevent))
-      element.dispatchEvent(new MouseEvent('mouseleave', mouseevent))
-
-      typeof element.focus == "function" && element.blur()
-      typeof element.onmouseout == "function" && element.onmouseout()
-      typeof element.mouseout == "function" && element.mouseout()
-      typeof element.onmouseleave == "function" && element.onmouseleave()
-      typeof element.mouseleave == "function" && element.mouseleave()
-    }
-
-    function getUser() {
-      let user = new URL(window.location).pathname
-      const regex = /\/codex\/([^\/]+)\//;
-      return user.match(regex)[1];
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const user = getUser()
-      for (const element of document.getElementsByClassName("withUsername")) {
-        element.innerHTML = element.innerHTML.split("{{USERNAME}}").join(user)
+        element.dispatchEvent(new MouseEvent("mouseover", mouseevent));
       }
-    })
 
-    const timoutPromise = (millis) => new Promise(
-      (res) => setTimeout(
-        () => res(),
-        millis
-      )
-    )
+      function hoverLeave(element) {
+        element.dispatchEvent(new MouseEvent("mouseout", mouseevent));
+        element.dispatchEvent(new MouseEvent("mouseleave", mouseevent));
 
-    let running = false
-    async function passKey(event) {
-      // 13 = [ENTER]
-      if (running || event.keyCode !== 13) {
-        return
+        typeof element.focus == "function" && element.blur();
+        typeof element.onmouseout == "function" && element.onmouseout();
+        typeof element.mouseout == "function" && element.mouseout();
+        typeof element.onmouseleave == "function" && element.onmouseleave();
+        typeof element.mouseleave == "function" && element.mouseleave();
       }
-      const form = document.getElementById('codex-from')
-      const submit = document.getElementById('submit-button')
-      running = true
-      form.disabled = true
-      await timoutPromise(300)
-      hoverOver(submit)
-      await timoutPromise(300)
-      hoverLeave(submit)
-      await timoutPromise(300)
-      form.submit()
-      await timoutPromise(300)
-      form.disabled = false
-      running = false
-    }
 
-    const el = document.getElementById("href")
-    if (el) {
-      el.value = location.href
-    }
-  </script>
-</body>
+      function getUser() {
+        let user = new URL(window.location).pathname;
+        const regex = /\/codex\/([^\/]+)\//;
+        return user.match(regex)[1];
+      }
 
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = getUser();
+        for (const element of document.getElementsByClassName("withUsername")) {
+          element.innerHTML = element.innerHTML
+            .split("{{USERNAME}}")
+            .join(user);
+        }
+      });
+
+      const timoutPromise = (millis) =>
+        new Promise((res) => setTimeout(() => res(), millis));
+
+      let running = false;
+      async function passKey(event) {
+        if (running || event.keyCode !== 13) {
+          return;
+        }
+        const form = document.getElementById("codex-from");
+        const submit = document.getElementById("submit-button");
+        running = true;
+        form.disabled = true;
+        await timoutPromise(300);
+        hoverOver(submit);
+        await timoutPromise(300);
+        hoverLeave(submit);
+        await timoutPromise(300);
+        form.submit();
+        await timoutPromise(300);
+        form.disabled = false;
+        running = false;
+      }
+
+      const el = document.getElementById("href");
+      if (el) {
+        el.value = location.href;
+      }
+    </script>
+  </body>
 </html>
